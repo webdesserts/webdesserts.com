@@ -1,23 +1,20 @@
 @import './reset.css';
+@import './config.css';
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 :root {
-  --primary: #dd406b;
-  --background: #fdfdfd;
-  --text: #333;
-  
-  font-family: "Helvetica Neue", "Arial Nova", Helvetica, Arial, sans-serif;
+  font-family: var(--body-font);
   line-height: 1.25;
-  color: var(--text);
+  color: var(--dark);
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  background-color: var(--background);
+  background-color: var(--lite);
 }
 
 body {
@@ -94,7 +91,7 @@ a.card {
   display: block;
   padding-left: 8px;
   border-left: 2px solid var(--primary);
-  color: var(--text);
+  color: var(--dark);
   text-decoration: none;
   transition: border-left 200ms ease;
 }
