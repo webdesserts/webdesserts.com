@@ -1,6 +1,6 @@
 import { ScrollPlane } from './scroll-plane'
 import { IncrementalScroll } from './incremental-scroll'
-import { progressPoint } from './utils'
+import { progressPoint } from './miscellaneous'
 
 export class App {
   constructor($root) {

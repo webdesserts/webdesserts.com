@@ -1,4 +1,4 @@
-import { easeOutQuad, progressPoint } from './utils'
+import { easeOutQuad, progressPoint } from './miscellaneous'
 
 // Long term, this will allow you to render a scene based on the position of a "camera"
 export class ScrollPlane {
