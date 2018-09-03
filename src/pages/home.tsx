@@ -33,8 +33,6 @@ export function Home(props: PageProps) {
       <p>I currently dabble in the Dat & Beaker Browser ecosystems. I also occasionally dabble with Color Spaces, SVG, and React. If you're new to any of this or you just have questions, feel free to reach out!</p>
       <nav>
         <Link to="blog">Blog</Link>
-        <span>Knowledge Base</span>
-        <span>About Me</span>
       </nav>
     </Block>
   )
