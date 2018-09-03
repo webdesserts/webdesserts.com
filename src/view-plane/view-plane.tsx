@@ -19,6 +19,15 @@ let ViewBox = styled.div.attrs<Point>({
   width: min-content;
   padding: 64px;
   outline: solid red 2px;
+
+  &::before {
+    display: block;
+    content: "view box";
+    color: red;
+    opacity: .5;
+    top: -20px;
+    left: 0px;
+    position: absolute;
 `
 
 // for now, these are all the same

@@ -21,6 +21,21 @@ let RoutesWrapper = styled(Router)`
   align-content: start;
   grid-auto-flow: column;
   grid-gap: 64px;
+
+  [role="group"] {
+    outline: 2px solid red !important;
+    position: relative;
+  }
+
+  [role="group"]::before {
+    display: block;
+    content: "route group";
+    color: red;
+    opacity: .5;
+    top: -20px;
+    left: 0px;
+    position: absolute;
+  }
 `
 
 export class App extends React.Component {
