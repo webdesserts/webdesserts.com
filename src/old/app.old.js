@@ -1,5 +1,5 @@
 import { ScrollPlane } from './scroll-plane'
-import { IncrementalScroll } from './incremental-scroll'
+import { IncrementalScroll } from './incremental-scroll.old'
 import { progressPoint } from './miscellaneous'
 
 export class App {

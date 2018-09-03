@@ -15,50 +15,7 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: var(--lite);
-}
-
-body {
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  display: flex;
-  justify-content: start;
-}
-
-main {
-  display: inline-flex;
-  flex-flow: row nowrap;
-  will-change: transform;
-  /* transition: transform 400ms ease; */
-  padding: 15vmin;
-}
-
-article {
-  position: relative;
-  width: 350px;
-  /* transition: transform 400ms ease, filter 400ms ease, max-height 400ms step-end; */
-  transform-origin: top;
-  max-height: 9999rem;
-}
-
-article > * + * {
-  margin-top: 16px;
-}
-
-article.selected {
-  z-index: 1;
-}
-
-article:not(.selected) {
-  /* transform: scale(.8);
-  opacity: .2;
-  filter: blur(2px); */
-  cursor: pointer;
-  max-height: 60vh;
-}
-
-article:not(.selected) > * {
-  pointer-events: none;
 }
 
 h1 {
@@ -67,46 +24,12 @@ h1 {
   margin: 0;
 }
 
-a[href] {
-  color: var(--primary);
-}
-
-ul {
-  list-style: none;
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-li + li::before {
-  content: "+";
-  margin: 0 .5rem;
-}
-
-
-/*=================*\
-*  Dat Experiments  *
-\*=================*/
-
-a.card {
-  display: block;
-  padding-left: 8px;
-  border-left: 2px solid var(--primary);
-  color: var(--dark);
-  text-decoration: none;
-  transition: border-left 200ms ease;
-}
-
-a.card:hover,
-a.card:focus {
-  border-left-width: 4px;
-}
-
-a.card > * + * {
-  margin-top: 8px;
-}
-
-a.card header {
+h2 {
+  font-size: 2rem;
   font-weight: 400;
-  font-size: 20px;
+  margin: 0;
+}
+
+a[href] {
   color: var(--primary);
 }

@@ -1,6 +1,5 @@
 import * as React from 'react'
 import styled from 'styled-components';
-import { createElement as html } from 'react'
 import { TickTock } from './tick-tock'
 
 let Wrapper = styled.div`
@@ -15,9 +14,11 @@ let Wrapper = styled.div`
 
 export class Clock extends React.Component {
   render() {
-    return html(Wrapper, {}, [
-      html(TickTock, { mode: 'seconds' }),
-      html(TickTock, { mode: 'minutes' }),
-    ])
+    return (
+      <Wrapper> 
+        <TickTock mode='seconds' />
+        <TickTock mode='minutes' />
+      </Wrapper>
+    )
   }
 }
