@@ -30,9 +30,9 @@ let Block = styled.div`
   justify-content: start;
 `
 
-let ViewBox = styled.div.attrs<Point>({
-  style: ({ x, y }) => ({ transform: `translateX(${x}px) translateY(${y}px)` })
-})`
+let ViewBox = styled.div.attrs(({ x, y }: Point) => ({
+  style: { transform: `translateX(${x}px) translateY(${y}px)` }
+}))<Point>`
   width: min-content;
   padding: 64px;
   outline: solid red 2px;
@@ -74,9 +74,9 @@ export class Scene extends React.Component<Props> {
     }
 
     return (
-      <Block innerRef={this.$block}>
-        <Motion style={motion_style}>{({x, y}) => (
-          <ViewBox innerRef={this.$viewbox} x={x} y={y}>
+      <Block ref={this.$block}>
+        <Motion style={motion_style}>{({ x, y }: Point) => (
+          <ViewBox ref={this.$viewbox} x={x} y={y}>
             {children}
             <Debug p={{ x, y }} dot />
             <Debug p={dest} />
@@ -91,12 +91,12 @@ export class Scene extends React.Component<Props> {
 *  Debugging  *
 \*===========*/
 
-let DebugBox = styled.svg.attrs<{ p: Point }>({
-  style: ({ p }) => ({
-    left: `calc(${-p.x}px - 5px)`,
-    top: `calc(${-p.y}px - 5px)`,
-  })
-})`
+let DebugBox = styled.svg.attrs(({ x, y }: Point) => ({
+  style: {
+    left: `calc(${-x}px - 5px)`,
+    top: `calc(${-y}px - 5px)`,
+  }
+}))<Point>`
   position: absolute;
   width: 10px;
   height: 10px;
@@ -107,7 +107,7 @@ let DebugBox = styled.svg.attrs<{ p: Point }>({
 
 function Debug ({ p, dot=false }) {
   return (
-    <DebugBox p={p} viewBox="-10 -10 20 20">
+    <DebugBox {...p} viewBox="-10 -10 20 20">
       <circle cx="0" cy="0" r={dot ? 2 : 8 } />
     </DebugBox>
   )

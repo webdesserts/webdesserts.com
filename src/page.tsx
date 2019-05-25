@@ -51,7 +51,7 @@ class RouteNavigator extends React.Component<NavigatorProps> {
   }
 
   render() {
-    return <Block innerRef={this.$block}>{this.props.children}</Block>;
+    return <Block ref={this.$block}>{this.props.children}</Block>;
   }
 }
 
