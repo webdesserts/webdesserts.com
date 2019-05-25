@@ -2,6 +2,23 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Motion, spring } from 'react-motion'
 
+// ## Scene
+// An x,y,z plane where "objects" can take up space
+
+// ## Scene Object (TODO)
+// An item that takes up space and can be placed at specific points in a scene
+// 
+// - A scene should be responsible for positioning scene objects
+// - I'm not completely sure object placement should interact with CSS's default
+//   layout models. Maybe objects just report where they are and we can just
+//   nudge objects in certain directions like "below", "right", or "above"?
+// - Another question is how dialogs work in this type of scene. It would be
+//   great if we could take advantage of the z axis.
+
+// ## Camera (TODO)
+// The x, y, z coordinates that define the current focus in the scene
+
+
 let Block = styled.div`
   height: 100vh;
   width: 100vw;
@@ -28,41 +45,23 @@ let ViewBox = styled.div.attrs<Point>({
     top: -20px;
     left: 0px;
     position: absolute;
+  }
 `
 
-// for now, these are all the same
-type Point = { x: number, y: number }
+export type Point = { x: number, y: number }
+type Props = Point
 
-type Props = {}
-type State = {
-  p: Point,
-}
-
-export class ViewPlane extends React.Component<Props,State> {
-  state = {
-    p: { x: 0, y: 0 },
-  }
-
+export class Scene extends React.Component<Props> {
   $block = React.createRef<HTMLDivElement>();
   $viewbox = React.createRef<HTMLDivElement>();
 
-  onChange = (event: React.MouseEvent<HTMLDivElement>) => {
-    let { clientX: x, clientY: y } = event
-    let { $viewbox, $block } = this
-    let box = $viewbox.current.getBoundingClientRect()
-    let block = $block.current.getBoundingClientRect()
-
-    let p = {
-      x: (box.left - Math.round(x) + block.width / 2),
-      y: (box.top - Math.round(y) + block.height / 2),
-    }
-
-    this.setState({ p })
-  }
-
   render () {
     let { children } = this.props
-    let { p } = this.state
+    console.log(`scene: ${this.props.x} ${this.props.y}`)
+    let dest = {
+      x: -this.props.x,
+      y: -this.props.y
+    }
 
     let physics = {
       stiffness: 120,
@@ -70,17 +69,17 @@ export class ViewPlane extends React.Component<Props,State> {
     }
 
     let motion_style = {
-      x: spring(p.x, physics),
-      y: spring(p.y, physics)
+      x: spring(dest.x, physics),
+      y: spring(dest.y, physics)
     }
 
     return (
       <Block innerRef={this.$block}>
         <Motion style={motion_style}>{({x, y}) => (
-          <ViewBox innerRef={this.$viewbox} x={x} y={y} onClick={this.onChange}>
+          <ViewBox innerRef={this.$viewbox} x={x} y={y}>
             {children}
             <Debug p={{ x, y }} dot />
-            <Debug p={p} />
+            <Debug p={dest} />
           </ViewBox>
         )}</Motion>
       </Block>
@@ -94,8 +93,8 @@ export class ViewPlane extends React.Component<Props,State> {
 
 let DebugBox = styled.svg.attrs<{ p: Point }>({
   style: ({ p }) => ({
-    left: `calc(50vw + ${-p.x}px - 5px)`,
-    top: `calc(50vh + ${-p.y}px - 5px)`,
+    left: `calc(${-p.x}px - 5px)`,
+    top: `calc(${-p.y}px - 5px)`,
   })
 })`
   position: absolute;

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Page, PageProps } from './page'
+import { PageComponentProps } from '../page'
 import { CardList } from '../common/cards'
 
 let experiments = [{
@@ -12,11 +12,11 @@ let experiments = [{
   description: `This app writes to a single file as fast as it can. Basically made it to try to break things`
 }]
 
-export function DatExperiments(props: PageProps) {
+export function DatExperiments(props: PageComponentProps) {
   return (
-    <Page title="Dat Experiment">
+    <article>
       <CardList cards={experiments} />
-    </Page>
+    </article>
   )
 }
 

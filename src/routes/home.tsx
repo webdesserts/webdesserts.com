@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { Page, PageProps } from './page'
-import { Link } from '@reach/router'
+import { RouteComponentProps } from 'react-router'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import * as Layouts from '../common/layouts'
 
-let Block = styled(Page)`
+let Layout = styled(Layouts.Default)`
   ul {
     list-style: none;
     display: flex;
@@ -21,9 +22,9 @@ let Block = styled(Page)`
   }
 `
 
-export function Home(props: PageProps) {
+export function Home(props: RouteComponentProps<{}>) {
   return (
-    <Block title="Web Desserts" subPage={props.children}>
+    <Layout title="Web Desserts">
       <ul>
         <li><a href="https://twitter.com/webdesserts">Twitter</a></li>
         <li><a href="https://github.com/webdesserts">Github</a></li>
@@ -32,8 +33,8 @@ export function Home(props: PageProps) {
       <p>Hi! You have arrived at the website for a web designer/developer named <strong>Michael Mullins</strong>.</p>
       <p>I currently dabble in the Dat & Beaker Browser ecosystems. I also occasionally dabble with Color Spaces, SVG, and React. If you're new to any of this or you just have questions, feel free to reach out!</p>
       <nav>
-        <Link to="blog">Blog</Link>
+        <Link to="/blog">Blog</Link>
       </nav>
-    </Block>
+    </Layout>
   )
 }

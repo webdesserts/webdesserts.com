@@ -1,55 +1,31 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Home, Blog, BlogPost, PageProps } from './pages'
-import { ViewPlane } from './view-plane'
-import { Router, Link } from "@reach/router"
-
-type ContentProps = {
-  width: string,
-  height: string
-} & PageProps
-
-let Content = styled.div<ContentProps>`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  background-color: palevioletred;
-`
-
-let RoutesWrapper = styled(Router)`
-  display: grid;
-  justify-content: start;
-  align-content: start;
-  grid-auto-flow: column;
-  grid-gap: 64px;
-
-  [role="group"] {
-    outline: 2px solid red !important;
-    position: relative;
-  }
-
-  [role="group"]::before {
-    display: block;
-    content: "route group";
-    color: red;
-    opacity: .5;
-    top: -20px;
-    left: 0px;
-    position: absolute;
-  }
-`
+import { Home, Blog, BlogPost } from './routes'
+import { Scene, Point } from './scene'
+import { BrowserRouter } from "react-router-dom"
+import { Page, Offset } from './page'
 
 export class App extends React.Component {
+  state: Point = { x: 0, y: 0 }
+
+  handleNavigate = (offset: Offset) => {
+    let x = offset.left + offset.width / 2 - window.document.documentElement.offsetWidth / 2
+    this.setState({ x, y: 0 })
+  }
+
   render() {
+    let { x, y } = this.state
+
     return (
-      <ViewPlane>
-        <RoutesWrapper>
-          <Home path="/">
-            <Blog path="/blog">
-              <BlogPost path=":postId" />
-            </Blog>
-          </Home>
-        </RoutesWrapper>
-      </ViewPlane>
+      <Scene x={x} y={y}>
+        <BrowserRouter>
+          <Page path="/" component={Home} onNavigate={this.handleNavigate}>
+            <Page path="/blog" component={Blog} onNavigate={this.handleNavigate}>
+              <Page path="/blog/:postId" component={BlogPost} onNavigate={this.handleNavigate} />
+            </Page>
+          </Page>
+        </BrowserRouter>
+      </Scene>
     )
   }
 }
