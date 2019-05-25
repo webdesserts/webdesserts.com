@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Motion, spring } from 'react-motion'
 
 // ## Scene
@@ -30,11 +30,11 @@ let Block = styled.div`
   justify-content: start;
 `
 
-let ViewBox = styled.div.attrs(({ x, y }: Point) => ({
-  style: { transform: `translateX(${x}px) translateY(${y}px)` }
-}))<Point>`
-  width: min-content;
-  padding: 64px;
+type ViewBoxProps = {
+  debug?: boolean
+} & Point
+
+let debugViewBox = css`
   outline: solid red 2px;
 
   &::before {
@@ -48,43 +48,49 @@ let ViewBox = styled.div.attrs(({ x, y }: Point) => ({
   }
 `
 
+let ViewBox = styled.div.attrs(({ x, y }: Point) => ({
+  style: { transform: `translateX(${x}px) translateY(${y}px)` }
+}))<ViewBoxProps>`
+  width: min-content;
+  padding: 64px;
+  ${({ debug }) => debug && debugViewBox}
+`
+
 export type Point = { x: number, y: number }
-type Props = Point
+type Props = {
+  children: React.ReactNode
+} & Point
 
-export class Scene extends React.Component<Props> {
-  $block = React.createRef<HTMLDivElement>();
-  $viewbox = React.createRef<HTMLDivElement>();
+export function Scene(props: Props) {
+  let $block = React.createRef<HTMLDivElement>();
+  let $viewbox = React.createRef<HTMLDivElement>();
 
-  render () {
-    let { children } = this.props
-    console.log(`scene: ${this.props.x} ${this.props.y}`)
-    let dest = {
-      x: -this.props.x,
-      y: -this.props.y
-    }
-
-    let physics = {
-      stiffness: 120,
-      dampening: 13
-    }
-
-    let motion_style = {
-      x: spring(dest.x, physics),
-      y: spring(dest.y, physics)
-    }
-
-    return (
-      <Block ref={this.$block}>
-        <Motion style={motion_style}>{({ x, y }: Point) => (
-          <ViewBox ref={this.$viewbox} x={x} y={y}>
-            {children}
-            <Debug p={{ x, y }} dot />
-            <Debug p={dest} />
-          </ViewBox>
-        )}</Motion>
-      </Block>
-    )
+  let dest = {
+    x: -props.x,
+    y: -props.y
   }
+
+  let physics = {
+    stiffness: 120,
+    dampening: 13
+  }
+
+  let motion_style = {
+    x: spring(dest.x, physics),
+    y: spring(dest.y, physics)
+  }
+
+  return (
+    <Block ref={$block}>
+      <Motion style={motion_style}>{({ x, y }: Point) => (
+        <ViewBox ref={$viewbox} x={x} y={y}>
+          {props.children}
+          {/* <Debug p={{ x, y }} dot />
+          <Debug p={dest} /> */}
+        </ViewBox>
+      )}</Motion>
+    </Block>
+  )
 }
 
 /*===========*\
