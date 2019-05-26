@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Motion, spring } from 'react-motion'
 
 // ## Scene
@@ -30,11 +30,11 @@ let Block = styled.div`
   justify-content: start;
 `
 
-let ViewBox = styled.div.attrs<Point>({
-  style: ({ x, y }) => ({ transform: `translateX(${x}px) translateY(${y}px)` })
-})`
-  width: min-content;
-  padding: 64px;
+type ViewBoxProps = {
+  debug?: boolean
+} & Point
+
+let debugViewBox = css`
   outline: solid red 2px;
 
   &::before {
@@ -48,55 +48,61 @@ let ViewBox = styled.div.attrs<Point>({
   }
 `
 
+let ViewBox = styled.div.attrs(({ x, y }: Point) => ({
+  style: { transform: `translateX(${x}px) translateY(${y}px)` }
+}))<ViewBoxProps>`
+  width: min-content;
+  padding: 64px;
+  ${({ debug }) => debug && debugViewBox}
+`
+
 export type Point = { x: number, y: number }
-type Props = Point
+type Props = {
+  children: React.ReactNode
+} & Point
 
-export class Scene extends React.Component<Props> {
-  $block = React.createRef<HTMLDivElement>();
-  $viewbox = React.createRef<HTMLDivElement>();
+export function Scene(props: Props) {
+  let $block = React.createRef<HTMLDivElement>();
+  let $viewbox = React.createRef<HTMLDivElement>();
 
-  render () {
-    let { children } = this.props
-    console.log(`scene: ${this.props.x} ${this.props.y}`)
-    let dest = {
-      x: -this.props.x,
-      y: -this.props.y
-    }
-
-    let physics = {
-      stiffness: 120,
-      dampening: 13
-    }
-
-    let motion_style = {
-      x: spring(dest.x, physics),
-      y: spring(dest.y, physics)
-    }
-
-    return (
-      <Block innerRef={this.$block}>
-        <Motion style={motion_style}>{({x, y}) => (
-          <ViewBox innerRef={this.$viewbox} x={x} y={y}>
-            {children}
-            <Debug p={{ x, y }} dot />
-            <Debug p={dest} />
-          </ViewBox>
-        )}</Motion>
-      </Block>
-    )
+  let dest = {
+    x: -props.x,
+    y: -props.y
   }
+
+  let physics = {
+    stiffness: 120,
+    dampening: 13
+  }
+
+  let motion_style = {
+    x: spring(dest.x, physics),
+    y: spring(dest.y, physics)
+  }
+
+  return (
+    <Block ref={$block}>
+      <Motion style={motion_style}>{({ x, y }: Point) => (
+        <ViewBox ref={$viewbox} x={x} y={y}>
+          {props.children}
+          {/* <Debug p={{ x, y }} dot />
+          <Debug p={dest} /> */}
+        </ViewBox>
+      )}</Motion>
+    </Block>
+  )
 }
 
 /*===========*\
 *  Debugging  *
 \*===========*/
 
-let DebugBox = styled.svg.attrs<{ p: Point }>({
-  style: ({ p }) => ({
-    left: `calc(${-p.x}px - 5px)`,
-    top: `calc(${-p.y}px - 5px)`,
-  })
-})`
+let DebugBox = styled.svg.attrs(({ x, y }: Point) => ({
+  style: {
+    left: `calc(${-x}px - 5px)`,
+    top: `calc(${-y}px - 5px)`,
+  }
+}))<Point>`
   position: absolute;
   width: 10px;
   height: 10px;
@@ -107,7 +113,7 @@ let DebugBox = styled.svg.attrs<{ p: Point }>({
 
 function Debug ({ p, dot=false }) {
   return (
-    <DebugBox p={p} viewBox="-10 -10 20 20">
+    <DebugBox {...p} viewBox="-10 -10 20 20">
       <circle cx="0" cy="0" r={dot ? 2 : 8 } />
     </DebugBox>
   )

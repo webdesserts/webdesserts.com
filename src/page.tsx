@@ -22,15 +22,16 @@ export type Offset = {
 
 type NavigatorProps = {
   onNavigate: (offset: Offset) => void,
-  exact: boolean
+  exact: boolean,
+  children: React.ReactNode
 }
 
-class RouteNavigator extends React.Component<NavigatorProps> {
-  $block = React.createRef<HTMLDivElement>();
+function RouteNavigator(props: NavigatorProps) {
+  let { exact, onNavigate, children } = props
+  let $block = React.createRef<HTMLDivElement>();
 
-  navigate() {
-    let { exact, onNavigate } = this.props
-    let { current } = this.$block
+  React.useLayoutEffect(() => {
+    let { current } = $block
     let offset = {
       left: current.offsetLeft,
       top: current.offsetTop,
@@ -39,20 +40,9 @@ class RouteNavigator extends React.Component<NavigatorProps> {
     }
 
     if (exact) onNavigate(offset);
-  }
+  }, [exact])
 
-  componentDidMount() {
-    this.navigate()
-  }
-
-  componentDidUpdate(prevProps: NavigatorProps) {
-    let { exact } = this.props;
-    if (prevProps.exact !== exact) this.navigate()
-  }
-
-  render() {
-    return <Block innerRef={this.$block}>{this.props.children}</Block>;
-  }
+  return <Block ref={$block}>{children}</Block>;
 }
 
 type Props = {
@@ -62,18 +52,16 @@ type Props = {
   onNavigate: (offset: Offset) => void
 }
 
-export class Page extends React.Component<Props> {
-  render() {
-    let { path, children, component: Comp, onNavigate, ...otherProps } = this.props;
+export function Page(props: Props) {
+  let { path, children, component: Comp, onNavigate, ...otherProps } = props;
 
-    return (
-      <Route path={path} render={routeProps => (
-          <RouteNavigator exact={routeProps.match.isExact} onNavigate={onNavigate}>
-            <Comp {...routeProps} />
-            {children}
-          </RouteNavigator>
-        )}
-      />
-    );
-  }
+  return (
+    <Route path={path} render={routeProps => (
+        <RouteNavigator exact={routeProps.match.isExact} onNavigate={onNavigate}>
+          <Comp {...routeProps} />
+          {children}
+        </RouteNavigator>
+      )}
+    />
+  );
 }
