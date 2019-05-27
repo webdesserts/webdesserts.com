@@ -6,7 +6,7 @@ import * as Layouts from '../common/layouts'
 
 export function Blog(props: RouteComponentProps<{}>) {
   return (
-    <Layouts.Default title="Blog Posts">
+    <Layouts.Default title="Blog Posts" parent={{path: "/", name: "Home"}}>
       <ul>
         {posts.map((post, index) => <li><Link to={`/blog/${index}`}>{index} – {post.title}</Link></li>)}
       </ul>

@@ -1,11 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Header } from './header'
+import { Header, ParentLink } from './header'
 
 type Props = {
   title: string,
   children: React.ReactNode,
   className?: string,
+  parent?: ParentLink
 }
 
 let DefaultBlock = styled.article`
@@ -17,11 +18,11 @@ let DefaultBlock = styled.article`
 `
 
 export function Default (props: Props) {
-  let { title, children, className } = props
+  let { title, children, className, parent } = props
 
   return (
     <DefaultBlock className={className}>
-      <Header title={title} />
+      <Header title={title} parent={parent}/>
       {children}
     </DefaultBlock>
   )
