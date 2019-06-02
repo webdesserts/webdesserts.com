@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 import styled from 'styled-components';
+import { Heading } from './typography'
 
 export type ParentLink = { path: LinkProps["to"], name?: string }
 type Props = {
@@ -23,7 +24,7 @@ export function Header (props: Props) {
           &lt; {parent.name || "Back"}
         </BackLink> : null
       }
-      <h1>{title}</h1>
+      <Heading as="h1" size="large">{title}</Heading>
     </header>
   )
 }

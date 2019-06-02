@@ -3,6 +3,7 @@ import { Home, Blog, BlogPost } from './routes'
 import { Scene, Point } from './scene'
 import { BrowserRouter } from "react-router-dom"
 import { Page, Offset } from './page'
+import { GlobalStyles, ResetStyles } from './styles'
 
 export function App() {
   let [point, setPoint] = React.useState<Point>({ x: 0, y: 0 });
@@ -14,18 +15,22 @@ export function App() {
   }
 
   return (
-    <Scene {...point}>
-      <BrowserRouter>
-        <Page path="/" component={Home} onNavigate={handleNavigate}>
-          <Page path="/blog" component={Blog} onNavigate={handleNavigate}>
-            <Page
-              path="/blog/:postId"
-              component={BlogPost}
-              onNavigate={handleNavigate}
-            />
+    <React.Fragment>
+      <ResetStyles />
+      <GlobalStyles />
+      <Scene {...point}>
+        <BrowserRouter>
+          <Page path="/" component={Home} onNavigate={handleNavigate}>
+            <Page path="/blog" component={Blog} onNavigate={handleNavigate}>
+              <Page
+                path="/blog/:postId"
+                component={BlogPost}
+                onNavigate={handleNavigate}
+              />
+            </Page>
           </Page>
-        </Page>
-      </BrowserRouter>
-    </Scene>
+        </BrowserRouter>
+      </Scene>
+    </React.Fragment>
   );
 }
