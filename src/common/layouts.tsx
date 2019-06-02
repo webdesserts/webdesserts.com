@@ -10,7 +10,7 @@ type Props = {
 }
 
 let DefaultBlock = styled.article`
-  width: 320px;
+  width: 300px;
 
   & > * + * {
     margin-top: 16px;

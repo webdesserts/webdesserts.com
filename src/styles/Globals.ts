@@ -20,7 +20,7 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
-  a[href] {
+  [href] {
     color: inherit;
     text-decoration: underline;
   }
