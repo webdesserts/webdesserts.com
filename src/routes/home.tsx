@@ -19,24 +19,27 @@ let Layout = styled(Layouts.Default)`
 `
 
 export function Home(props: RouteComponentProps<{}>) {
+  let { isExact } = props.match
+  let tabIndex = isExact ? 0 : -1
+
   return (
     <Layout title="Michael Mullins">
       <LinkList>
-        <li><ButtonLink href="https://twitter.com/webdesserts">Twitter</ButtonLink></li>
-        <li><ButtonLink href="https://github.com/webdesserts">Github</ButtonLink></li>
-        <li><ButtonLink href="https://twitch.tv/webdesserts">Twitch</ButtonLink></li>
+        <li><ButtonLink href="https://twitter.com/webdesserts" tabIndex={tabIndex}>Twitter</ButtonLink></li>
+        <li><ButtonLink href="https://github.com/webdesserts" tabIndex={tabIndex}>Github</ButtonLink></li>
+        <li><ButtonLink href="https://twitch.tv/webdesserts" tabIndex={tabIndex}>Twitch</ButtonLink></li>
       </LinkList>
       <p>Welcome! I am a designer/developer who has been working with the web for the past 8 years. I currently dabble in the Dat & Beaker Browser ecosystems. I also occasionally dabble with Color Spaces, SVG, and React. If you're new to any of this or you just have questions, feel free to reach out!</p>
       <RouteList>
-        <RouteListItem to="/projects">
+        <RouteListItem to="/projects" tabIndex={tabIndex}>
           <header>Projects</header>
           <p>Things that I’ve been working on</p>
         </RouteListItem>
-        <RouteListItem to="/community">
+        <RouteListItem to="/community" tabIndex={tabIndex}>
           <header>Community Highlights</header>
           <p>Things other people are working on</p>
         </RouteListItem>
-        <RouteListItem to="/resume">
+        <RouteListItem to="/resume" tabIndex={tabIndex}>
           <header>Hire Me!</header>
           <p>Fulltime design or dev, Austin or remote</p>
         </RouteListItem>
