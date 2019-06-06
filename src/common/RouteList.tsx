@@ -6,8 +6,10 @@ import IconChevronRight from '../icons/icon-chevron-right.svg'
 
 export { RouteList, RouteListItem }
 
+
 function RouteListItem(props: NavLink["props"]) {
   let {children, ...otherProps} = props
+
   return (
     <RouteLink {...otherProps}>
         {children} <IconChevronRight />
@@ -49,7 +51,8 @@ const RouteLink = styled(NavLink)`
     z-index: -1;
   }
   &:hover::after,
-  &:focus::after {
+  &:focus::after,
+  &.active::after {
     background-color: ${colors.darkAlt};
     transition: transform 250ms ease, background-color 200ms ease;
     transform: none;
@@ -59,12 +62,13 @@ const RouteLink = styled(NavLink)`
     outline: 2px solid ${colors.primary};
   }
 
-  &:not(:hover):not(:focus) {
+  &:not(:hover):not(:focus):not(.active) {
     --icon-accent: ${colors.primary};
   }
 
   &:hover,
-  &:focus {
+  &:focus,
+  &.active {
     color: ${colors.liteAlt};
     p {
       color: inherit;

@@ -28,15 +28,15 @@ export function Home(props: RouteComponentProps<{}>) {
       </LinkList>
       <p>Welcome! I am a designer/developer who has been working with the web for the past 8 years. I currently dabble in the Dat & Beaker Browser ecosystems. I also occasionally dabble with Color Spaces, SVG, and React. If you're new to any of this or you just have questions, feel free to reach out!</p>
       <RouteList>
-        <RouteListItem to="projects">
+        <RouteListItem to="/projects">
           <header>Projects</header>
           <p>Things that I’ve been working on</p>
         </RouteListItem>
-        <RouteListItem to="community">
+        <RouteListItem to="/community">
           <header>Community Highlights</header>
           <p>Things other people are working on</p>
         </RouteListItem>
-        <RouteListItem to="resume">
+        <RouteListItem to="/resume">
           <header>Hire Me!</header>
           <p>Fulltime design or dev, Austin or remote</p>
         </RouteListItem>
