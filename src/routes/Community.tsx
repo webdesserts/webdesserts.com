@@ -1,9 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
-import * as Layouts from '../common/layouts'
-import { Project } from '../common/Project'
-import { Divider } from '../common/Divider'
+import { Project, Divider, layouts } from '../common'
 
 const dat_protocol_urls = {
   Website: "https://dat.foundation/",
@@ -20,7 +18,7 @@ const cabal_urls = {
   Github: "https://github.com/cabal-club"
 }
 
-const Layout = styled(Layouts.Default)`
+const Layout = styled(layouts.Default)`
   width: 356px;
   grid-gap: 24px;
 `

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 import styled, { css } from 'styled-components';
-import { Heading } from './typography';
+import { Heading } from './';
 import IconChevronLeft from '../icons/icon-chevron-left.svg';
 import { fonts, colors, mixins } from '../styles'
 

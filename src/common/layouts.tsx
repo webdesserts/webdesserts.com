@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Header, ParentLink } from './header'
+import { Header, ParentLink } from './'
 
 type Props = {
   title?: string,

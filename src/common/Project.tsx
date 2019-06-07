@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import { colors } from '../styles'
-import { Heading } from './typography'
-import { ButtonLink } from './ButtonLink'
+import { Heading, ButtonLink } from './'
 
 interface ProjectProps {
   title: string,

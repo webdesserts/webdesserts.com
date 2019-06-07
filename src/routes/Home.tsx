@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
 import styled from 'styled-components'
-import * as Layouts from '../common/layouts'
-import { RouteList, RouteListItem } from '../common/RouteList'
-import { ButtonLink } from '../common/ButtonLink'
+import { RouteList, RouteListItem, ButtonLink, layouts } from '../common'
 
 let LinkList = styled.ul`
   list-style: none;
@@ -11,7 +9,7 @@ let LinkList = styled.ul`
   flex-flow: row nowrap;
 `
 
-let Layout = styled(Layouts.Default)`
+let Layout = styled(layouts.Default)`
   li + li {
     margin-left: 8px;
   }

@@ -1,9 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
-import * as Layouts from '../common/layouts'
-import { Project } from '../common/Project'
-import { Divider } from '../common/Divider'
+import { Project, Divider, layouts } from '../common'
 
 const logger_urls = {
   Figma: "https://www.figma.com/file/YTQS6iZHzqMQPlewPs83sHLq/Web-Desserts?node-id=40%3A48",
@@ -14,7 +12,7 @@ const webterm_urls = {
   Github: "https://github.com/webdesserts/webterm"
 }
 
-const Layout = styled(Layouts.Default)`
+const Layout = styled(layouts.Default)`
   width: 356px;
   grid-gap: 24px;
 `
