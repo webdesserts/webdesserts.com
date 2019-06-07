@@ -25,9 +25,9 @@ export function Default (props: Props) {
   let { title, children, className, parent } = props
 
   return (
-    <DefaultBlock className={className}>
+    <DefaultBlock>
       <Header title={title} parent={parent}/>
-      <DefaultContent>
+      <DefaultContent className={className}>
         {children}
       </DefaultContent>
     </DefaultBlock>

@@ -1,2 +1,3 @@
-export { Home } from './home'
-export { Projects } from './projects'
+export * from './home'
+export * from './projects'
+export * from './community'
