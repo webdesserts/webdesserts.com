@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Home, Blog, BlogPost } from './routes'
+import { Home, Projects } from './routes'
 import { Scene, Point } from './scene'
 import { BrowserRouter } from "react-router-dom"
 import { Page, Offset } from './page'
@@ -21,13 +21,7 @@ export function App() {
       <Scene {...point}>
         <BrowserRouter>
           <Page path="/" component={Home} onNavigate={handleNavigate}>
-            <Page path="/blog" component={Blog} onNavigate={handleNavigate}>
-              <Page
-                path="/blog/:postId"
-                component={BlogPost}
-                onNavigate={handleNavigate}
-              />
-            </Page>
+            <Page path="/projects" component={Projects} onNavigate={handleNavigate} />
           </Page>
         </BrowserRouter>
       </Scene>

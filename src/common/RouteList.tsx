@@ -1,11 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
-import { colors, fonts } from '../styles'
-import styled from 'styled-components'
+import { colors, fonts, mixins } from '../styles'
+import styled, { css } from 'styled-components'
 import IconChevronRight from '../icons/icon-chevron-right.svg'
 
 export { RouteList, RouteListItem }
-
 
 function RouteListItem(props: NavLink["props"]) {
   let {children, ...otherProps} = props
@@ -18,11 +17,16 @@ function RouteListItem(props: NavLink["props"]) {
 } 
 
 const RouteLink = styled(NavLink)`
+  ${mixins.focus_outline}
+  ${mixins.spread(css`
+    transform: scaleY(calc((48 - 8) / 48)) translateX(calc(100% - 2px));
+  `)}
+
+  --icon-accent: ${colors.primary};
   text-decoration: none;
   text-align: right;
-  position: relative;
   overflow: hidden;
-  height: 56px;
+  height: 48px;
   display: flex;
   flex-flow: column nowrap;
   align-items: right;
@@ -35,44 +39,15 @@ const RouteLink = styled(NavLink)`
   align-content: center;
   justify-content: end;
   grid-gap: 0 8px;
-  transition: color 250ms ease;
-
-  &::after {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: ${colors.liteAlt};
-    transition: transform 400ms ease-in-out, background-color 600ms ease-in;
-    transform: scaleY(calc((56 - 16) / 56)) translateX(calc(100% - 2px));
-    z-index: -1;
-  }
-  &:hover::after,
-  &:focus::after,
-  &.active::after {
-    background-color: ${colors.darkAlt};
-    transition: transform 250ms ease, background-color 200ms ease;
-    transform: none;
-  }
-
-  &:focus {
-    outline: 2px solid ${colors.primary};
-  }
-
-  &:not(:hover):not(:focus):not(.active) {
-    --icon-accent: ${colors.primary};
-  }
+  transition: color 200ms ease, height 200ms ease;
 
   &:hover,
   &:focus,
   &.active {
+    height: 56px;
+    --icon-accent: ${colors.liteAlt};
     color: ${colors.liteAlt};
-    p {
-      color: inherit;
-    }
+    p { color: ${colors.liteAlt}; }
   }
 
   header {

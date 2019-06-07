@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Header, ParentLink } from './header'
 
 type Props = {
-  title: string,
+  title?: string,
   children: React.ReactNode,
   className?: string,
   parent?: ParentLink
@@ -11,10 +11,14 @@ type Props = {
 
 let DefaultBlock = styled.article`
   width: 300px;
-
-  & > * + * {
-    margin-top: 16px;
-  }
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 8px;
+`
+let DefaultContent = styled.div`
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 16px;
 `
 
 export function Default (props: Props) {
@@ -23,7 +27,9 @@ export function Default (props: Props) {
   return (
     <DefaultBlock className={className}>
       <Header title={title} parent={parent}/>
-      {children}
+      <DefaultContent>
+        {children}
+      </DefaultContent>
     </DefaultBlock>
   )
 }

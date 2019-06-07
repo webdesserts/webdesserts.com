@@ -3,10 +3,9 @@ import { RouteComponentProps } from 'react-router'
 import styled from 'styled-components'
 import * as Layouts from '../common/layouts'
 import { RouteList, RouteListItem } from '../common/RouteList'
-import { fonts, colors } from '../styles'
+import { ButtonLink } from '../common/ButtonLink'
 
 let LinkList = styled.ul`
-  margin-top: 8px;
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
@@ -47,31 +46,3 @@ export function Home(props: RouteComponentProps<{}>) {
     </Layout>
   )
 }
-
-const ButtonLink = styled.a`
-  ${fonts.heading_small}
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 32px;
-  text-decoration: none;
-  transition: color 200ms ease;
-  &::after {
-    position: absolute;
-    display: block;
-    content: '';
-    bottom: 2px;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    transition: width 200ms ease;
-    background-color: ${colors.primary};
-    width: 24px;
-  }
-  &:hover::after {
-    width: 100%;
-  }
-  &:hover {
-    color: ${colors.primary}
-  }
-`
