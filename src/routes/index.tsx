@@ -1,3 +1,3 @@
-export * from './home'
-export * from './projects'
+export * from './Home'
+export * from './Projects'
 export * from './community'
