@@ -1,7 +1,8 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useState, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import { Motion, spring } from 'react-motion'
 import { Model } from './utils/Model'
+import throttle from 'lodash.throttle'
 
 export type Point = { x: number, y: number }
 export type Rect = Point & { width: number, height: number }
@@ -111,13 +112,24 @@ interface CameraProps {
 
 function Camera(props: CameraProps) {
   let { children } = props
+  let initialBounds = { top: 0, left: 0, bottom: 0, right: 0}
   let scene = useScene()
   let focused_objs = scene.getFocused()
+  let [bounds, setBounds] = useState(initialBounds)
 
-  // TODO: use this to define scrollable area
-  let bounds = focused_objs.length ?
-    getTotalBounds(focused_objs.map(getOffsetBounds)) :
-    { top: 0, left: 0, bottom: 0, right: 0}
+  useLayoutEffect(() => {
+    let updateBounds = throttle(() => {
+      if (focused_objs.length) {
+        setBounds(getTotalBounds(focused_objs.map(getOffsetBounds)))
+      }
+    }, 500)
+
+    updateBounds()
+    window.addEventListener('resize', updateBounds)
+    return () => {
+      window.removeEventListener('resize', updateBounds)
+    }
+  }, [scene]) 
 
   let physics = {
     stiffness: 120,
