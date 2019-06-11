@@ -1,6 +1,11 @@
-import * as React from 'react'
+import React, { useLayoutEffect } from 'react'
 import styled, { css } from 'styled-components'
 import { Motion, spring } from 'react-motion'
+import { Model } from './utils/Model'
+
+export type Point = { x: number, y: number }
+export type Rect = Point & { width: number, height: number }
+export type Bounds = { top: number, left: number, bottom: number, right: number }
 
 // ## Scene
 // An x,y,z plane where "objects" can take up space
@@ -18,6 +23,27 @@ import { Motion, spring } from 'react-motion'
 // ## Camera (TODO)
 // The x, y, z coordinates that define the current focus in the scene
 
+/*=======*\
+*  Scene  *
+\*=======*/
+
+type SceneProps = {
+  children: React.ReactNode
+}
+
+export function Scene(props: SceneProps) {
+  let { children } = props
+  let scene = SceneModel.useState(SceneModel.initialState);
+  return (
+    <SceneProvider model={scene}>
+      <Block>
+        <Camera>
+          {children}
+        </Camera>
+      </Block>
+    </SceneProvider>
+  );
+}
 
 let Block = styled.div`
   height: 100vh;
@@ -30,85 +56,186 @@ let Block = styled.div`
   justify-content: start;
 `
 
-type ViewBoxProps = {
+type SceneState = Map<HTMLDivElement, boolean>;
+
+class SceneModel extends Model<SceneState> {
+  static initialState: SceneState = new Map()
+
+  // init() {
+  //   console.log("new scene:", this.state)
+  // }
+
+  set(key: HTMLDivElement, value: boolean) {
+    this.setState((state) => {
+      let nextState = new Map(state)
+      nextState.set(key, value)
+      return nextState
+    })
+  }
+
+  delete(key: HTMLDivElement) {
+    this.setState((state) => {
+      let nextState = new Map(state)
+      nextState.delete(key)
+      return nextState
+    })
+  }
+
+  getFocused() : HTMLDivElement[] {
+    console.log("finding focus for:", Array.from(this.state.keys()))
+    return Array.from(this.state.keys())
+      .filter((node) => this.state.get(node) /* is it focused? */)
+      .filter((node) => document.documentElement.contains(node))
+  }
+}
+
+let [ SceneProvider, useScene ] = SceneModel.createContext(SceneModel.initialState);
+
+/*========*\
+*  Camera  *
+\*========*/
+
+type CameraNodeProps = {
   debug?: boolean
 } & Point
 
-let debugViewBox = css`
-  outline: solid red 2px;
-
-  &::before {
-    display: block;
-    content: "view box";
-    color: red;
-    opacity: .5;
-    top: -20px;
-    left: 0px;
-    position: absolute;
-  }
-`
-
-let ViewBox = styled.div.attrs(({ x, y }: Point) => ({
-  style: { transform: `translateX(${x}px) translateY(${y}px)` }
-}))<ViewBoxProps>`
-  width: min-content;
+let CameraNode = styled.div.attrs(reposition)<CameraNodeProps>`
+  width: max-content;
   padding: 64px;
-  ${({ debug }) => debug && debugViewBox}
-`
+  ${({ debug }) => debug && debugCamera}
+`;
 
-export type Point = { x: number, y: number }
-type Props = {
+interface CameraProps {
   children: React.ReactNode
-} & Point
+}
 
-export function Scene(props: Props) {
-  let $block = React.createRef<HTMLDivElement>();
-  let $viewbox = React.createRef<HTMLDivElement>();
+function Camera(props: CameraProps) {
+  let { children } = props
+  let scene = useScene()
+  let focused_objs = scene.getFocused()
 
-  let dest = {
-    x: -props.x,
-    y: -props.y
-  }
+  // TODO: use this to define scrollable area
+  let bounds = focused_objs.length ?
+    getTotalBounds(focused_objs.map(getOffsetBounds)) :
+    { top: 0, left: 0, bottom: 0, right: 0}
 
   let physics = {
     stiffness: 120,
     dampening: 13
   }
 
+  let documentWidth = window.document.documentElement.offsetWidth
+  let documentHeight = window.document.documentElement.offsetHeight
+
+  let dest = {
+    x: bounds.left + ((bounds.right - bounds.left) / 2) - documentWidth / 2,
+    y: 0
+  }
+
   let motion_style = {
-    x: spring(dest.x, physics),
-    y: spring(dest.y, physics)
+    x: spring(-dest.x, physics),
+    y: spring(-dest.y, physics)
   }
 
   return (
-    <Block ref={$block}>
-      <Motion style={motion_style}>{({ x, y }: Point) => (
-        <ViewBox ref={$viewbox} x={x} y={y}>
-          {props.children}
-          {/* <Debug p={{ x, y }} dot />
-          <Debug p={dest} /> */}
-        </ViewBox>
-      )}</Motion>
-    </Block>
+    <Motion style={motion_style}>
+      {({ x, y }: Point) => (
+        <CameraNode x={x} y={y}>
+          {children}
+          {/* <Debug p={{ x: bounds.right, y: bounds.top }} /> */}
+          {/* <Debug p={dest} /> */}
+        </CameraNode>
+      )}
+    </Motion>
+  );
+}
+
+/*==============*\
+*  Scene Object  *
+\*==============*/
+
+
+interface SceneObjectProps extends React.HTMLAttributes<HTMLDivElement>{
+  focused: boolean,
+  children: React.ReactNode
+}
+
+export function SceneObject (props: SceneObjectProps) {
+  let { focused, children, ...otherProps } = props
+  let nodeRef = React.createRef<HTMLDivElement>()
+  let scene = useScene()
+
+  React.useLayoutEffect(function trackLayout() {
+    let node = nodeRef.current;
+    scene.set(node, focused);
+    return () => {
+      scene.delete(node);
+    };
+  }, [focused]);
+
+  return (
+    <SceneObjectNode ref={nodeRef} {...otherProps}>
+      {children}
+    </SceneObjectNode>
   )
+}
+
+const SceneObjectNode = styled.div``
+
+/*=======*\
+*  Utils  *
+\*=======*/
+
+function reposition({ x, y }: Point) {
+  return { style: { transform: `translateX(${x}px) translateY(${y}px)` }}
+}
+
+function getOffsetBounds(node: HTMLElement) : Bounds {
+  return {
+    top: node.offsetTop,
+    right: node.offsetLeft + node.offsetWidth,
+    bottom: node.offsetTop + node.offsetHeight,
+    left: node.offsetLeft,
+  }
+}
+
+// TODO: default to scene bounds if nothing is focused
+function getTotalBounds(all_bounds: Bounds[]) {
+  let initial: Bounds = { top: Infinity, right: -Infinity, bottom: -Infinity, left: Infinity }
+  return all_bounds.reduce((total: Bounds, bounds: Bounds) => {
+    total.top = Math.min(total.top, bounds.top)
+    total.right = Math.max(total.right, bounds.right)
+    total.bottom = Math.max(total.bottom, bounds.bottom)
+    total.left = Math.min(total.left, bounds.left)
+    return total
+  }, initial)
 }
 
 /*===========*\
 *  Debugging  *
 \*===========*/
 
-let DebugBox = styled.svg.attrs(({ x, y }: Point) => ({
-  style: {
-    left: `calc(${-x}px - 5px)`,
-    top: `calc(${-y}px - 5px)`,
-  }
-}))<Point>`
+let DebugBox = styled.svg.attrs(reposition)<Point>`
   position: absolute;
   width: 10px;
   height: 10px;
   stroke: red;
   fill: none;
   stroke-width: 4;
+`
+
+let debugCamera = css`
+  outline: solid red 2px;
+
+  &::before {
+    display: block;
+    content: "camera";
+    color: red;
+    opacity: .5;
+    top: -20px;
+    left: 0px;
+    position: absolute;
+  }
 `
 
 function Debug ({ p, dot=false }) {

@@ -1,12 +1,12 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { Route, RouteComponentProps } from 'react-router'
+import { SceneObject } from './scene'
 
 export type PageComponentProps = {
   path: string;
   children?: React.ReactNode;
 }
-
 
 let PageGroup = styled.div`
   display: grid;
@@ -14,13 +14,9 @@ let PageGroup = styled.div`
   grid-auto-flow: column;
 `
 
-type PageWrapperProps = {
-  exact: boolean,
-}
-
-let PageWrapper = styled.div<PageWrapperProps>`
-  ${({ exact }) =>
-    exact
+let PageSceneObject = styled(SceneObject)`
+  ${({ focused }) =>
+    focused
       ? css`
           transition: filter 200ms ease, opacity 200ms ease;
         `
@@ -32,58 +28,25 @@ let PageWrapper = styled.div<PageWrapperProps>`
         `}
 `;
 
-export type Offset = {
-  left: number,
-  top: number,
-  width: number,
-  height: number,
-}
-
-type NavigatorProps = {
-  onNavigate: (offset: Offset) => void,
-  exact: boolean,
-  children: React.ReactNode
-}
-
-function RouteNavigator(props: NavigatorProps) {
-  let { exact, onNavigate, children } = props
-  let groupRef = React.createRef<HTMLDivElement>();
-
-  React.useLayoutEffect(() => {
-    let { current } = groupRef
-    let offset = {
-      left: current.offsetLeft,
-      top: current.offsetTop,
-      width: current.offsetWidth,
-      height: current.offsetHeight,
-    }
-
-    if (exact) onNavigate(offset);
-  }, [exact])
-
-  return <PageWrapper exact={exact} ref={groupRef}>{children}</PageWrapper>;
-}
-
 type Props = {
   children?: React.ReactNode,
   path: string,
   component: React.ComponentClass<RouteComponentProps<any>> | React.StatelessComponent<RouteComponentProps<any>>,
-  onNavigate: (offset: Offset) => void
 }
 
 export function Page(props: Props) {
-  let { path, children, component: Comp, onNavigate, ...otherProps } = props;
+  let { path, children, component: Comp } = props;
 
   return (
     <Route
       path={path}
       render={routeProps => {
-        let exact = routeProps.match.isExact;
+        let { isExact } = routeProps.match
         return (
           <PageGroup>
-            <RouteNavigator exact={exact} onNavigate={onNavigate}>
+            <PageSceneObject focused={isExact}>
               <Comp {...routeProps} />
-            </RouteNavigator>
+            </PageSceneObject>
             {children}
           </PageGroup>
         );
