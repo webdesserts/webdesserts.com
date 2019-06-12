@@ -19,6 +19,7 @@ const cabal_urls = {
 }
 
 const Layout = styled(layouts.Default)`
+  max-width: 356px;
   grid-gap: 24px;
 `
 

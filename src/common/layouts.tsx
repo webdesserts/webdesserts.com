@@ -42,7 +42,6 @@ let DefaultBlock = styled.article`
   grid-auto-flow: row;
   grid-gap: 16px;
   width: calc(100vw - 24px * 2);
-  max-width: 356px;
 
   ${ParentLinkButton} {
     position: absolute;
