@@ -47,6 +47,7 @@ let DefaultBlock = styled.article`
   ${ParentLinkButton} {
     position: absolute;
     top: -40px;
+    left: 0;
   }
 `
 
