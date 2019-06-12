@@ -28,16 +28,16 @@ export type Bounds = { top: number, left: number, bottom: number, right: number 
 *  Scene  *
 \*=======*/
 
-type SceneProps = {
+interface SceneProps extends React.HTMLAttributes<HTMLDivElement>{
   children: React.ReactNode
 }
 
 export function Scene(props: SceneProps) {
-  let { children } = props
+  let { children, ...otherProps } = props
   let scene = SceneModel.useState(SceneModel.initialState);
   return (
     <SceneProvider model={scene}>
-      <Block>
+      <Block {...otherProps}>
         <Camera>
           {children}
         </Camera>
@@ -52,7 +52,6 @@ let Block = styled.div`
   background-color: #eee;
   overflow: hidden;
   display: grid;
-  padding: 24px;
   align-content: start;
   justify-content: start;
 `
@@ -102,7 +101,6 @@ type CameraNodeProps = {
 
 let CameraNode = styled.div.attrs(reposition)<CameraNodeProps>`
   width: max-content;
-  padding: 64px;
   ${({ debug }) => debug && debugCamera}
 `;
 

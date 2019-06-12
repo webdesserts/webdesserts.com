@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
 import styled from 'styled-components'
-import { RouteList, RouteListItem, ButtonLink, layouts } from '../common'
+import { RouteList, RouteListItem, ButtonLink, layouts, Heading } from '../common'
 
 let LinkList = styled.ul`
   list-style: none;
@@ -10,6 +10,7 @@ let LinkList = styled.ul`
 `
 
 let Layout = styled(layouts.Default)`
+  max-width: 300px;
   li + li {
     margin-left: 8px;
   }
@@ -20,7 +21,8 @@ export function Home(props: RouteComponentProps<{}>) {
   let tabIndex = isExact ? 0 : -1
 
   return (
-    <Layout title="Michael Mullins">
+    <Layout>
+      <Heading as="h1" size="large">Michael Mullins</Heading>
       <LinkList>
         <li><ButtonLink href="https://twitter.com/webdesserts" tabIndex={tabIndex}>Twitter</ButtonLink></li>
         <li><ButtonLink href="https://github.com/webdesserts" tabIndex={tabIndex}>Github</ButtonLink></li>
