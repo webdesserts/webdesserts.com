@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { Route, RouteComponentProps } from 'react-router'
 import { SceneObject } from './scene'
+import { animations } from './styles'
 
 export type PageComponentProps = {
   path: string;
@@ -15,6 +16,7 @@ let PageGroup = styled.div`
 `
 
 let PageSceneObject = styled(SceneObject)`
+  animation: ${animations.fadeIn} 300ms ease;
   ${({ focused }) =>
     focused
       ? css`
