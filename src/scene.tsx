@@ -1,28 +1,43 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react'
-import styled, { css } from 'styled-components'
+import React, { useLayoutEffect, useState } from 'react'
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { Motion, spring } from 'react-motion'
 import { Model } from './utils/Model'
 import throttle from 'lodash.throttle'
+import { colors } from './styles'
 
 export type Point = { x: number, y: number }
-export type Rect = Point & { width: number, height: number }
+export type Size = { width: number, height: number }
+export type Rect = Point & Size
 export type Bounds = { top: number, left: number, bottom: number, right: number }
 
 // ## Scene
-// An x,y,z plane where "objects" can take up space
+// An x, y, z plane where "objects" can take up space
 
-// ## Scene Object (TODO)
-// An item that takes up space and can be placed at specific points in a scene
-// 
-// - A scene should be responsible for positioning scene objects
-// - I'm not completely sure object placement should interact with CSS's default
-//   layout models. Maybe objects just report where they are and we can just
-//   nudge objects in certain directions like "below", "right", or "above"?
-// - Another question is how dialogs work in this type of scene. It would be
-//   great if we could take advantage of the z axis.
+// ## Scene Object
+// An item that takes up space and can be placed at specific points in a scene.
+// The scene is responsible for managing object placement
 
-// ## Camera (TODO)
-// The x, y, z coordinates that define the current focus in the scene
+// ## Camera
+// An area containg all focused objects on the scene. Responsible for moving
+// between focused objects
+
+/*==========*\
+*  Elements  *
+\*==========*/
+
+type CameraElProps = Size
+let CameraEl = styled.div.attrs(resize)<CameraElProps>`
+  /* ${debugBox(colors.primary, "camera")} */
+  box-sizing: content-box;
+  overflow: visible;
+`;
+
+type SceneElProps = Point
+let SceneEl = styled.div.attrs(reposition)<SceneElProps>`
+  /* ${debugBox(colors.secondary, "scene")} */
+  width: fit-content;
+  height: max-content;
+`
 
 /*=======*\
 *  Scene  *
@@ -30,40 +45,23 @@ export type Bounds = { top: number, left: number, bottom: number, right: number 
 
 interface SceneProps extends React.HTMLAttributes<HTMLDivElement>{
   children: React.ReactNode
+  className?: string
 }
 
 export function Scene(props: SceneProps) {
-  let { children, ...otherProps } = props
+  let { children, className } = props
   let scene = SceneModel.useState(SceneModel.initialState);
   return (
     <SceneProvider model={scene}>
-      <Block {...otherProps}>
-        <Camera>
-          {children}
-        </Camera>
-      </Block>
+      <Camera className={className}>{children}</Camera>
     </SceneProvider>
   );
 }
-
-let Block = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-color: #eee;
-  overflow: hidden;
-  display: grid;
-  align-content: start;
-  justify-content: start;
-`
 
 type SceneState = Map<HTMLDivElement, boolean>;
 
 class SceneModel extends Model<SceneState> {
   static initialState: SceneState = new Map()
-
-  // init() {
-  //   console.log("new scene:", this.state)
-  // }
 
   set(key: HTMLDivElement, value: boolean) {
     this.setState((state) => {
@@ -82,7 +80,7 @@ class SceneModel extends Model<SceneState> {
   }
 
   getFocused() : HTMLDivElement[] {
-    console.log("finding focus for:", Array.from(this.state.keys()))
+    // console.log("finding focus for:", Array.from(this.state.keys()))
     return Array.from(this.state.keys())
       .filter((node) => this.state.get(node) /* is it focused? */)
       .filter((node) => document.documentElement.contains(node))
@@ -95,21 +93,13 @@ let [ SceneProvider, useScene ] = SceneModel.createContext(SceneModel.initialSta
 *  Camera  *
 \*========*/
 
-type CameraNodeProps = {
-  debug?: boolean
-} & Point
-
-let CameraNode = styled.div.attrs(reposition)<CameraNodeProps>`
-  width: max-content;
-  ${({ debug }) => debug && debugCamera}
-`;
-
 interface CameraProps {
-  children: React.ReactNode
+  children: React.ReactNode,
+  className?: string
 }
 
 function Camera(props: CameraProps) {
-  let { children } = props
+  let { children, className } = props
   let initialBounds = { top: 0, left: 0, bottom: 0, right: 0}
   let scene = useScene()
   let focused_objs = scene.getFocused()
@@ -134,27 +124,26 @@ function Camera(props: CameraProps) {
     dampening: 13
   }
 
-  let documentWidth = window.document.documentElement.offsetWidth
-  let documentHeight = window.document.documentElement.offsetHeight
-
-  let dest = {
-    x: bounds.left + ((bounds.right - bounds.left) / 2) - documentWidth / 2,
-    y: 0
+  let dest: Rect = {
+    x: bounds.left,
+    y: bounds.top,
+    width: bounds.right - bounds.left,
+    height: bounds.bottom - bounds.top
   }
 
   let motion_style = {
     x: spring(-dest.x, physics),
-    y: spring(-dest.y, physics)
+    y: spring(-dest.y, physics),
+    width: spring(dest.width, physics),
+    height: spring(dest.height, physics)
   }
 
   return (
     <Motion style={motion_style}>
-      {({ x, y }: Point) => (
-        <CameraNode x={x} y={y}>
-          {children}
-          {/* <Debug p={{ x: bounds.right, y: bounds.top }} /> */}
-          {/* <Debug p={dest} /> */}
-        </CameraNode>
+      {({ x, y, width, height }: Rect) => (
+        <CameraEl className={className} width={width} height={height}>
+          <SceneEl x={x} y={y}>{children}</SceneEl>
+        </CameraEl>
       )}
     </Motion>
   );
@@ -163,7 +152,6 @@ function Camera(props: CameraProps) {
 /*==============*\
 *  Scene Object  *
 \*==============*/
-
 
 interface SceneObjectProps extends React.HTMLAttributes<HTMLDivElement>{
   focused: boolean,
@@ -184,20 +172,33 @@ export function SceneObject (props: SceneObjectProps) {
   }, [focused]);
 
   return (
-    <SceneObjectNode ref={nodeRef} {...otherProps}>
+    <SceneObjectEl ref={nodeRef} {...otherProps}>
       {children}
-    </SceneObjectNode>
+    </SceneObjectEl>
   )
 }
 
-const SceneObjectNode = styled.div``
+const SceneObjectEl = styled.div``
 
 /*=======*\
 *  Utils  *
 \*=======*/
 
 function reposition({ x, y }: Point) {
-  return { style: { transform: `translateX(${x}px) translateY(${y}px)` }}
+  return {
+    style: {
+      transform: `translateX(${x}px) translateY(${y}px)`
+    }
+  };
+}
+
+function resize({ width, height }: Size) {
+  return {
+    style: {
+      width: `${width}px`,
+      height: `${height}px`
+    }
+  };
 }
 
 function getOffsetBounds(node: HTMLElement) : Bounds {
@@ -225,33 +226,21 @@ function getTotalBounds(all_bounds: Bounds[]) {
 *  Debugging  *
 \*===========*/
 
-let DebugBox = styled.svg.attrs(reposition)<Point>`
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  stroke: red;
-  fill: none;
-  stroke-width: 4;
-`
 
-let debugCamera = css`
-  outline: solid red 2px;
-
-  &::before {
-    display: block;
-    content: "camera";
-    color: red;
-    opacity: .5;
-    top: -20px;
-    left: 0px;
-    position: absolute;
-  }
-`
-
-function Debug ({ p, dot=false }) {
-  return (
-    <DebugBox {...p} viewBox="-10 -10 20 20">
-      <circle cx="0" cy="0" r={dot ? 2 : 8 } />
-    </DebugBox>
-  )
-}
+function debugBox(color: string = colors.mid, label?: string) {
+  return css`
+    position: relative;
+    outline: solid ${color} 2px;
+    ${label &&
+      css`
+        &::before {
+          display: block;
+          content: "${label}";
+          color: ${color};
+          top: -20px;
+          left: 0px;
+          position: absolute;
+        }
+      `}
+  `;
+};
