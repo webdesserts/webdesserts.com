@@ -18,12 +18,14 @@ let PageSceneObject = styled(SceneObject)`
   ${({ focused }) =>
     focused
       ? css`
-          transition: filter 200ms ease, opacity 200ms ease;
+          transition: filter 200ms ease, opacity 200ms ease, transform 200ms ease;
+          transform: perspective(30in);
         `
       : css`
-          transition: filter 500ms ease, opacity 500ms ease;
-          filter: grayscale() blur(1px);
-          opacity: 0.5;
+          transition: filter 500ms ease, opacity 500ms ease, transform 500ms ease;
+          transform: perspective(30in) translateZ(-192px);
+          filter: grayscale();
+          opacity: 0.3;
           pointer-events: none;
         `}
 `;
