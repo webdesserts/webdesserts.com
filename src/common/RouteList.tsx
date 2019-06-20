@@ -3,49 +3,72 @@ import { NavLink } from 'react-router-dom'
 import { colors, fonts, mixins } from '../styles'
 import styled, { css } from 'styled-components'
 import IconChevronRight from '../icons/icon-chevron-right.svg'
+import IconChevronLeft from '../icons/icon-chevron-left.svg'
 
-export { RouteList, RouteListItem }
+export { NavList, NavButtonRight, NavButtonLeft }
 
-function RouteListItem(props: NavLink["props"]) {
+function NavButtonRight(props: NavLink["props"]) {
   let {children, ...otherProps} = props
 
   return (
-    <RouteLink {...otherProps}>
-        {children} <IconChevronRight />
-    </RouteLink>
+    <NavButton side="right" {...otherProps}>
+      {children} <IconChevronRight />
+    </NavButton>
   )
 } 
 
-const RouteLink = styled(NavLink)`
+function NavButtonLeft(props: NavLink["props"]) {
+  let {children, ...otherProps} = props
+
+  return (
+    <NavButton side="left" {...otherProps}>
+      <IconChevronLeft /> {children}
+    </NavButton>
+  )
+} 
+
+const right_styles = css`
+  ${mixins.spread_from_right_edge}
+  text-align: right;
+  grid-template-columns: auto 16px;
+  justify-content: end;
+  svg {
+    grid-column: span 1 / -1;
+  }
+`;
+
+const left_styles = css`
+  ${mixins.spread_from_left_edge}
+  text-align: left;
+  grid-template-columns: 16px auto;
+  justify-content: start;
+  svg {
+    grid-column: span 1 / 0;
+  }
+`;
+
+const NavButton = styled(NavLink)<{ side: "right" | "left" }>`
   ${mixins.focus_outline}
-  ${mixins.spread(css`
-    transform: scaleY(calc((48 - 8) / 48)) translateX(calc(100% - 2px));
-  `)}
+  ${({ side = "right" }) => (side === "right" ? right_styles : left_styles)}
 
   --icon-accent: ${colors.primary};
   text-decoration: none;
-  text-align: right;
   overflow: hidden;
-  height: 48px;
   display: flex;
   flex-flow: column nowrap;
-  align-items: right;
-  justify-content: center;
-  padding-right: 16px;
+  padding: 0 12px;
   display: grid;
-  grid-template-columns: auto 16px;
   grid-auto-flow: column;
   align-items: center;
   align-content: center;
-  justify-content: end;
   grid-gap: 0 8px;
-  transition: color 200ms ease, height 200ms ease;
+  transition: color 200ms ease, padding 200ms ease;
 
   &:hover,
   &:focus,
   &.active {
-    height: 56px;
     --icon-accent: ${colors.liteAlt};
+    padding: 4px 12px;
     color: ${colors.liteAlt};
     p { color: ${colors.liteAlt}; }
   }
@@ -60,13 +83,12 @@ const RouteLink = styled(NavLink)`
   }
 
   svg {
-    grid-column: span 1 / -1;
     grid-row: span 2;
   }
 `;
 
-const RouteList = styled.nav`
+const NavList = styled.nav`
   display: grid;
   grid-auto-flow: row;
   grid-gap: 8px 0;
-`
+`;

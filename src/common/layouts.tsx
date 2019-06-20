@@ -8,23 +8,22 @@ type ParentLink = { path: LinkProps["to"], name?: string }
 
 let ParentLinkButton = styled(Link)`
   ${fonts.heading_small}
-  ${mixins.spread(css`
-    transform: scaleY(calc((32 - 8) / 32)) translateX(-100%);
-  `)}
+  ${mixins.spread_from_left}
   ${mixins.focus_outline}
+
+  --icon-accent: ${colors.primary};
   display: inline-grid;
   align-items: center;
   justify-content: start;
   grid-auto-flow: column;
-  height: 32px;
+  padding: 8px 0;
   grid-gap: 4px;
   text-decoration: none;
   line-height: 16px;
-  --icon-accent: ${colors.primary};
   transition: color 200ms ease, padding 200ms ease;
   &:hover,
   &:focus {
-    padding: 0 8px;
+    padding: 8px;
     color: ${colors.liteAlt};
     --icon-accent: currentColor;
   }
@@ -33,34 +32,53 @@ let ParentLinkButton = styled(Link)`
 type DefaultLayoutProps = {
   children: React.ReactNode,
   className?: string,
-  parent?: ParentLink
+  parent?: ParentLink,
+  action?: React.ReactNode
 }
 
-let DefaultBlock = styled.article`
+const ActionBar = styled.div`
+  position: absolute;
+  top: -40px;
+  left: 0;
+  height: 32px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-items: end;
+  grid-gap: 16px;
+  width: 100%;
+
+  &:empty { display: none; }
+  @media print { display: none; }
+  ${ParentLinkButton} {
+    justify-self: start;
+  }
+`
+
+const DefaultBlock = styled.article`
   position: relative;
   display: grid;
   grid-auto-flow: row;
   grid-gap: 16px;
   width: calc(100vw - 24px * 2);
-
-  ${ParentLinkButton} {
-    position: absolute;
-    top: -40px;
-    left: 0;
-  }
 `
 
+
 export function Default (props: DefaultLayoutProps) {
-  let { children, className, parent } = props
+  let { children, className, parent, action=null } = props
 
   return (
     <DefaultBlock className={className}>
+      <ActionBar>
+        {parent ? (
+          <ParentLinkButton to={parent.path}>
+            <IconChevronLeft />{parent.name || "Back"}
+          </ParentLinkButton>
+        ) : null}
+        {action}
+      </ActionBar>
       {children}
-      {parent ? (
-        <ParentLinkButton to={parent.path}>
-          <IconChevronLeft />{parent.name || "Back"}
-        </ParentLinkButton>
-      ) : null}
     </DefaultBlock>
   );
 }

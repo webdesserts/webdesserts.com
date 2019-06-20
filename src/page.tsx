@@ -29,6 +29,7 @@ let PageSceneObject = styled(SceneObject)`
           filter: grayscale();
           opacity: 0.3;
           pointer-events: none;
+          @media print { display: none; }
         `}
 `;
 

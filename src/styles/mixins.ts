@@ -21,8 +21,8 @@ const spread_base = css`
     content: "";
     top: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
+    bottom: 0;
+    right: 0;
     position: absolute;
     background-color: ${colors.liteAlt};
     transition: transform 400ms ease-in-out, background-color 600ms ease-in;
@@ -30,14 +30,54 @@ const spread_base = css`
   }
 `
 
-export function spread(styles: FlattenSimpleInterpolation) {
+type SpreadOptions = {
+  from?: FlattenSimpleInterpolation,
+  to?: FlattenSimpleInterpolation
+}
+
+export function spread({ from, to }: SpreadOptions) {
   return css`
     ${spread_base}
     &::after {
-      ${styles}
+      ${from}
     }
-  `
+    &:hover,
+    &:focus,
+    &.active {
+      &::after {
+        ${to}
+      }
+    }
+  `;
 }
+
+export const spread_from_right = spread({
+  from: css`
+    transform: translateX(calc(100%));
+  `
+});
+
+export const spread_from_right_edge = spread({
+  from: css`
+    transform: translateX(calc(100% - 2px));
+  `
+});
+
+export const spread_from_left = spread({
+  from: css`
+    transform: translateX(calc(-100%));
+  `
+});
+
+export const spread_from_left_edge = spread({
+  from: css`
+    transform: translateX(calc(-100% + 2px));
+  `
+});
+
+export const focus_reset = css`
+  &:focus { outline: none; }
+`
 
 export const focus_outline = css`
   &:focus,

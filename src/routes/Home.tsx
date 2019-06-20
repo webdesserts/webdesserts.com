@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
 import styled from 'styled-components'
-import { RouteList, RouteListItem, ButtonLink, layouts, Heading } from '../common'
+import { NavList,ButtonLink, layouts, Heading, NavButtonRight } from '../common'
 
 let LinkList = styled.ul`
   list-style: none;
@@ -29,20 +29,20 @@ export function Home(props: RouteComponentProps<{}>) {
         <li><ButtonLink href="https://twitch.tv/webdesserts" tabIndex={tabIndex}>Twitch</ButtonLink></li>
       </LinkList>
       <p>Welcome! I am a designer/developer who has been working with the web for the past 8 years. I currently dabble in the Dat & Beaker Browser ecosystems. I also occasionally dabble with Color Spaces, SVG, and React. If you're new to any of this or you just have questions, feel free to reach out!</p>
-      <RouteList>
-        <RouteListItem to="/projects" tabIndex={tabIndex}>
+      <NavList>
+        <NavButtonRight to="/projects" tabIndex={tabIndex}>
           <header>Projects</header>
           <p>Things that I’ve been working on</p>
-        </RouteListItem>
-        <RouteListItem to="/community" tabIndex={tabIndex}>
+        </NavButtonRight>
+        <NavButtonRight to="/community" tabIndex={tabIndex}>
           <header>Community Highlights</header>
           <p>Things other people are working on</p>
-        </RouteListItem>
-        <RouteListItem to="/resume" tabIndex={tabIndex}>
+        </NavButtonRight>
+        <NavButtonRight to="/career" tabIndex={tabIndex}>
           <header>Hire Me!</header>
           <p>Fulltime design or dev, Austin or remote</p>
-        </RouteListItem>
-      </RouteList>
+        </NavButtonRight>
+      </NavList>
     </Layout>
   )
 }

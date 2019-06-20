@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Home, Projects, Community } from './routes'
+import { Home, Projects, Community, Career, Resume } from './routes'
 import { Scene } from './scene'
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter, Redirect, Switch } from "react-router-dom"
 import { Page } from './page'
 import { GlobalStyles, ResetStyles } from './styles'
 import styled from 'styled-components'
@@ -14,6 +14,10 @@ let ScrollView = styled.div`
   display: flex;
   align-items: start;
   justify-content: start;
+  @media print {
+    padding-top: 0;
+    overflow: visible;
+  }
 `;
 
 let AppScene = styled(Scene)`
@@ -29,10 +33,16 @@ export function App() {
       <ScrollView>
         <AppScene>
           <BrowserRouter>
-            <Page path="/" component={Home}>
-              <Page path="/projects" component={Projects} />
-              <Page path="/community" component={Community} />
-            </Page>
+            <Switch>
+              <Redirect from="/resume" to="/career/resume" />
+              <Page path="/" component={Home}>
+                <Page path="/projects" component={Projects} />
+                <Page path="/community" component={Community} />
+                <Page path="/career" component={Career}>
+                  <Page path="/career/resume" component={Resume} />
+                </Page>
+              </Page>
+            </Switch>
           </BrowserRouter>
         </AppScene>
       </ScrollView>

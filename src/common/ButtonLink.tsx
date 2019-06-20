@@ -4,14 +4,18 @@ import styled, { css } from 'styled-components'
 export const ButtonLink = styled.a`
   ${fonts.heading_small}
   ${mixins.focus_outline}
-  ${mixins.spread(css`
-    background-color: ${colors.primary};
-    transform: translateX(calc(-100% + 24px)) translateY(12px) scaleY(calc(2 / 32));
-  `)}
+  ${mixins.spread({
+    from: css`
+      background-color: ${colors.primary};
+      transform: translateX(calc(-100% + 24px)) translateY(12px)
+        scaleY(calc(2 / 32));
+    `
+  })}
   position: relative;
   display: flex;
   align-items: center;
   height: 32px;
+
   text-decoration: none;
   transition: color 200ms ease, padding 200ms ease;
   &:hover,
@@ -34,4 +38,4 @@ export const ButtonLink = styled.a`
   /* &:hover::before {
     width: 100%;
   } */
-`
+`;

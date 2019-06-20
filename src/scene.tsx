@@ -30,6 +30,10 @@ let CameraEl = styled.div.attrs(resize)<CameraElProps>`
   /* ${debugBox(colors.primary, "camera")} */
   box-sizing: content-box;
   overflow: visible;
+  @media print {
+    width: auto !important;
+    height: auto !important;
+  }
 `;
 
 type SceneElProps = Point
@@ -37,6 +41,9 @@ let SceneEl = styled.div.attrs(reposition)<SceneElProps>`
   /* ${debugBox(colors.secondary, "scene")} */
   width: fit-content;
   height: max-content;
+  @media print {
+    transform: none !important;
+  }
 `
 
 /*=======*\
