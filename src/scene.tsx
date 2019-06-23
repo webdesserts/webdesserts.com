@@ -39,6 +39,7 @@ let CameraEl = styled.div.attrs(resize)<CameraElProps>`
 type SceneElProps = Point
 let SceneEl = styled.div.attrs(reposition)<SceneElProps>`
   /* ${debugBox(colors.secondary, "scene")} */
+  position: relative; /* safari needs this for some reason and I'm not sure why */
   width: fit-content;
   height: max-content;
   @media print {
