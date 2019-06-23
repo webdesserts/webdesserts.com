@@ -15,7 +15,8 @@ module.exports = {
     })
   ],
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    writeToDisk: true
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
