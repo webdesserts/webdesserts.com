@@ -1,5 +1,5 @@
-let path = require('path')
-let ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+let path = require("path");
+let ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
   output: { path: path.resolve("assets/build") },
@@ -11,8 +11,8 @@ module.exports = {
       useTypescriptIncrementalApi: true,
       checkSyntacticErrors: true,
       silent: true,
-      formatter: 'codeframe'
-}),
+      formatter: "codeframe"
+    })
   ],
   devServer: {
     historyApiFallback: true
