@@ -16,15 +16,15 @@ let PageGroup = styled.div`
 `
 
 let PageSceneObject = styled(SceneObject)`
-  animation: ${animations.fadeIn} 300ms ease;
+  animation: 400ms ease-in-out 200ms ${animations.fadeIn} backwards;
   ${({ focused }) =>
     focused
       ? css`
-          transition: filter 200ms ease, opacity 200ms ease, transform 200ms ease;
+          transition: filter 300ms ease-in-out, opacity 400ms ease, transform 300ms ease;
           transform: perspective(30in);
         `
       : css`
-          transition: filter 500ms ease, opacity 500ms ease, transform 500ms ease;
+          transition: filter 300ms ease-in-out, opacity 500ms ease, transform 700ms ease 300ms ;
           transform: perspective(30in) translateZ(-192px);
           filter: grayscale();
           opacity: 0.3;
