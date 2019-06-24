@@ -5,7 +5,7 @@ import { Project, Divider, layouts } from '../common'
 
 const logger_urls = {
   Figma: "https://www.figma.com/file/YTQS6iZHzqMQPlewPs83sHLq/Web-Desserts?node-id=40%3A48",
-  Github: "https://github.com/webdesserts/dashboard"
+  Github: "https://github.com/webdesserts/logger"
 }
 const webterm_urls = {
   Figma: "https://www.figma.com/file/YTQS6iZHzqMQPlewPs83sHLq/Web-Desserts?node-id=217%3A0",
