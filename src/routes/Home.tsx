@@ -2,6 +2,7 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
 import styled from 'styled-components'
 import { NavList,ButtonLink, layouts, Heading, NavButtonRight } from '../common'
+import { DateTime } from 'luxon'
 
 let LinkList = styled.ul`
   list-style: none;
@@ -20,6 +21,9 @@ export function Home(props: RouteComponentProps<{}>) {
   let { isExact } = props.match
   let tabIndex = isExact ? 0 : -1
 
+  let career_start = DateTime.fromObject({ month: 1, year: 2012 })
+  let years = Math.floor(Math.abs(career_start.diffNow().as("years")))
+
   return (
     <Layout>
       <Heading as="h1" size="large">Michael Mullins</Heading>
@@ -28,7 +32,7 @@ export function Home(props: RouteComponentProps<{}>) {
         <li><ButtonLink href="https://github.com/webdesserts" tabIndex={tabIndex}>Github</ButtonLink></li>
         <li><ButtonLink href="https://twitch.tv/webdesserts" tabIndex={tabIndex}>Twitch</ButtonLink></li>
       </LinkList>
-      <p>Welcome! I am a designer/developer who has been working with the web for the past 8 years. I currently dabble in the Dat & Beaker Browser ecosystems. I also occasionally dabble with Color Spaces, SVG, and React. If you're new to any of this or you just have questions, feel free to reach out!</p>
+      <p>Welcome! I am a designer/developer who has been working with the web for the past {years} years. I currently dabble in the Dat & Beaker Browser ecosystems. I also occasionally dabble with Color Spaces, SVG, and React. If you're new to any of this or you just have questions, feel free to reach out!</p>
       <NavList>
         <NavButtonRight to="/projects" tabIndex={tabIndex}>
           <header>Projects</header>
