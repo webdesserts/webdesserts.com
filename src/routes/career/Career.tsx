@@ -11,18 +11,26 @@ const Layout = styled(layouts.Default)`
 const SubHeading = styled.p`
   margin: 0;
 `
+
 const Footer = styled.footer`
-  display: grid;
-  grid-gap: 0 16px;
-  grid-auto-flow: column;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto auto 1fr auto;
-  justify-content: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex: row wrap;
+  margin-right: -16px;
+  & > * {
+    margin-right: 16px;
+  }
+`;
+
+const Field = styled.div`
+  display: flex;
+  flex-flow: column;
 `
 
 const ResumeNavButton = styled(NavButtonRight)`
-  grid-row: span 1 / -1;
   margin-left: auto;
+  min-height: 32px;
 `
 
 const LinkLabel = styled.label`
@@ -53,10 +61,14 @@ export function Career(props: RouteComponentProps<{}>) {
         could use my skillset, contact me.
       </p>
       <Footer>
-        <LinkLabel>Email</LinkLabel>
-        <ButtonLink tabIndex={tabIndex} href="mailto:michael@webdesserts.com">michael@webdesserts.com</ButtonLink>
-        <LinkLabel>Linkedin</LinkLabel>
-        <ButtonLink tabIndex={tabIndex} href="https://www.linkedin.com/in/mcmullins">/in/mcmullins</ButtonLink>
+        <Field>
+          <LinkLabel>Email</LinkLabel>
+          <ButtonLink tabIndex={tabIndex} href="mailto:michael@webdesserts.com">michael@webdesserts.com</ButtonLink>
+        </Field>
+        <Field>
+          <LinkLabel>Linkedin</LinkLabel>
+          <ButtonLink tabIndex={tabIndex} href="https://www.linkedin.com/in/mcmullins">/in/mcmullins</ButtonLink>
+        </Field>
         <ResumeNavButton tabIndex={tabIndex} to="/career/resume">
           <header>Paper Resume</header>
         </ResumeNavButton>
