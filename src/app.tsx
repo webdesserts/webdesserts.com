@@ -10,7 +10,6 @@ let ScrollView = styled.div`
   padding-top: 40px;
   height: 100vh;
   width: 100vw;
-  overflow: auto;
   display: flex;
   align-items: start;
   justify-content: start;
