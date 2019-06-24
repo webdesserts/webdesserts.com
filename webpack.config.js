@@ -1,5 +1,6 @@
 let path = require("path");
 let ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+let os = require('os')
 
 module.exports = {
   output: { path: path.resolve("assets/build") },
@@ -16,7 +17,9 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
-    writeToDisk: true
+    writeToDisk: true,
+    host: '0.0.0.0',
+    public: os.hostname()
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
