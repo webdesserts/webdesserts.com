@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { Route, RouteComponentProps } from 'react-router'
+import { Link } from 'react-router-dom'
 import { SceneObject } from './scene'
 import { animations } from './styles'
 
@@ -13,6 +14,12 @@ let PageGroup = styled.div`
   display: grid;
   grid-gap: 64px;
   grid-auto-flow: column;
+`
+
+let PageLink = styled(Link)`
+  pointer-events: none;
+  cursor: pointer;
+  text-decoration: none;
 `
 
 let PageSceneObject = styled(SceneObject)`
@@ -28,7 +35,6 @@ let PageSceneObject = styled(SceneObject)`
           transform: perspective(30in) translateZ(-192px);
           filter: grayscale();
           opacity: 0.3;
-          pointer-events: none;
           @media print { display: none; }
         `}
 `;
@@ -42,15 +48,17 @@ type Props = {
 export function Page(props: Props) {
   let { path, children, component: Comp } = props;
 
+
   return (
     <Route
       path={path}
       render={routeProps => {
         let { isExact } = routeProps.match
+        let page_contents = <Comp {...routeProps} />
         return (
           <PageGroup>
             <PageSceneObject focused={isExact}>
-              <Comp {...routeProps} />
+              {isExact ? page_contents : <PageLink to={path}>{page_contents}</PageLink>}
             </PageSceneObject>
             {children}
           </PageGroup>
