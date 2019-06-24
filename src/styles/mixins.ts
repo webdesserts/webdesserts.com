@@ -12,7 +12,7 @@ const spread_base = css`
     --icon-accent: currentColor;
     &::after {
       background-color: ${colors.darkAlt};
-      transition: transform 250ms ease, background-color 200ms ease;
+      transition: all 250ms ease, background-color 200ms ease;
       transform: none;
     }
   }
@@ -25,10 +25,10 @@ const spread_base = css`
     right: 0;
     position: absolute;
     background-color: ${colors.liteAlt};
-    transition: transform 400ms ease-in-out, background-color 600ms ease-in;
+    transition: all 400ms ease-in-out, background-color 600ms ease-in;
     z-index: -1;
   }
-`
+`;
 
 type SpreadOptions = {
   from?: FlattenSimpleInterpolation,

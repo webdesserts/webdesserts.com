@@ -5,10 +5,17 @@ export const ButtonLink = styled.a`
   ${fonts.heading_small}
   ${mixins.focus_outline}
   ${mixins.spread({
+    to: css`
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+    `,
     from: css`
       background-color: ${colors.primary};
-      transform: translateX(calc(-100% + 24px)) translateY(12px)
-        scaleY(calc(2 / 32));
+      height: 2px; 
+      width: 24px;
+      top: initial;
+      bottom: 4px;
     `
   })}
   position: relative;
