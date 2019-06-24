@@ -1,0 +1,5 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--icon-main, currentColor)" stroke-width="2" stroke-linecap="square" 
+  xmlns="http://www.w3.org/2000/svg">
+  <path d="M8 4L12 8L8 12" stroke="var(--icon-accent)"/>
+  <path d="M5 9L6 8L5 7L4 8L5 9Z"/>
+</svg>

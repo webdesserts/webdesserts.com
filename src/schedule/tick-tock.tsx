@@ -1,6 +1,5 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components';
-import { createElement as html } from 'react'
 
 let Wrapper = styled.div`
   height: 100%;
@@ -9,7 +8,7 @@ let Wrapper = styled.div`
   justify-content: space-between;
 `
 
-let Tick = styled.div`
+let Tick = styled.div<{ active?: boolean }>`
   background-color: ${({ active = false }) => active ? 'var(--lite-1)' : 'var(--lite)' };
   transition: background-color 200ms ease-out;
   width: calc((1 / 60) * (100vh - 8px));
@@ -19,7 +18,17 @@ let Tick = styled.div`
   flex: 0 1 auto;
 `
 
-export class TickTock extends React.Component {
+namespace TickTock {
+  export interface Props {
+    mode?: string
+  }
+}
+
+export class TickTock extends React.Component<TickTock.Props> {
+  static defaultProps = {
+    mode: 'seconds'
+  };
+
   componentDidMount() { this.tick() }
   componentDidUpdate() { this.tick() }
 
@@ -32,7 +41,7 @@ export class TickTock extends React.Component {
   }
 
   render() {
-    let { mode = 'seconds' } = this.props
+    let { mode } = this.props
     let ticks = [];
     let i = 0;
 
@@ -49,10 +58,10 @@ export class TickTock extends React.Component {
         position: i,
         active: i <= increment
       }
-      ticks.push(html(Tick, props));
+      ticks.push(<Tick {...props}/>);
       i++;
     }
 
-    return html(Wrapper, {}, ticks)
+    return <Wrapper>{ticks}</Wrapper>
   }
 }

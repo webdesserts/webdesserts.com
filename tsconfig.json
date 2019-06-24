@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+      "noEmit": true,
+      "outDir": "./assets/build",
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "target": "es6",
+      "jsx": "react",
+      "isolatedModules": true,
+      "skipLibCheck": true
+  },
+  "include": [ "src" ]
+}
