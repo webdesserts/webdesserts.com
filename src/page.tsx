@@ -16,12 +16,6 @@ let PageGroup = styled.div`
   grid-auto-flow: column;
 `
 
-let PageLink = styled(Link)`
-  pointer-events: none;
-  cursor: pointer;
-  text-decoration: none;
-`
-
 let PageSceneObject = styled(SceneObject)`
   animation: 400ms ease-in-out 200ms ${animations.fadeIn} backwards;
   ${({ focused }) =>
@@ -31,10 +25,12 @@ let PageSceneObject = styled(SceneObject)`
           transform: perspective(30in);
         `
       : css`
-          transition: filter 300ms ease-in-out, opacity 500ms ease, transform 700ms ease 300ms ;
+          transition: filter 300ms ease-in-out, opacity 500ms ease, transform 700ms ease 100ms;
           transform: perspective(30in) translateZ(-192px);
           filter: grayscale();
           opacity: 0.3;
+          cursor: pointer;
+          & > * { pointer-events: none; }
           @media print { display: none; }
         `}
 `;
@@ -53,12 +49,15 @@ export function Page(props: Props) {
     <Route
       path={path}
       render={routeProps => {
-        let { isExact } = routeProps.match
-        let page_contents = <Comp {...routeProps} />
+        let { match, history } = routeProps
+        function navigate () {
+          //TODO: this will break as soon as params come into play
+          match.isExact || history.push(path)
+        }
         return (
           <PageGroup>
-            <PageSceneObject focused={isExact}>
-              {isExact ? page_contents : <PageLink to={path}>{page_contents}</PageLink>}
+            <PageSceneObject focused={match.isExact} onClick={navigate}>
+              <Comp {...routeProps} />
             </PageSceneObject>
             {children}
           </PageGroup>
