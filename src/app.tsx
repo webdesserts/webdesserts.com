@@ -14,6 +14,8 @@ let ScrollView = styled.div`
   display: flex;
   align-items: start;
   justify-content: start;
+  -webkit-overflow-scrolling: touch;
+
   @media print {
     padding-top: 0;
     overflow: visible;
