@@ -203,7 +203,7 @@ export function Resume(props: RouteComponentProps<{}>) {
               </a>
             </div>
             <div className="location">Temple, Texas</div>
-            <div className="duration">October 2016 - Present</div>
+            <div className="duration">October 2016 - May 2019</div>
             <ul>
               <li>Continued the work started at Integrity</li>
               <li>Supported the product team in developing user workflows</li>
