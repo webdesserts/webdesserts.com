@@ -192,7 +192,7 @@ export function Resume(props: RouteComponentProps<{}>) {
             </Heading>
 
             <Heading size="small" as="h3">
-              Lead Designer
+              Lead UI Designer
             </Heading>
             <div className="company">
               <a
