@@ -265,7 +265,7 @@ export function Resume(props: RouteComponentProps<{}>) {
               </li>
               <li>Advised on UX and UI issues when needed</li>
             </ul>
-            
+
             <Heading size="small" as="h3">
               Web Intern
             </Heading>
@@ -408,11 +408,8 @@ export function Resume(props: RouteComponentProps<{}>) {
         </div>
         <footer>
           This Resumé is maintained at{" "}
-          <a
-            href="http://www-webdesserts.hashbase.io/resume.html"
-            target="_blank"
-          >
-            http://www-webdesserts.hashbase.io/resume.html
+          <a href="http://www.webdesserts.com/resume" target="_blank">
+            http://www.webdesserts.com/resume
           </a>{" "}
           and is available on{" "}
           <a href="https://beakerbrowser.com/">the p2p web</a>
