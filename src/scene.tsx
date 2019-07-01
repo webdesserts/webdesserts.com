@@ -31,8 +31,8 @@ let CameraEl = styled.div.attrs(resize)<CameraElProps>`
   box-sizing: content-box;
   overflow: visible;
   @media print {
-    width: auto !important;
-    height: auto !important;
+    width: initial !important;
+    height: initial !important;
   }
 `;
 
