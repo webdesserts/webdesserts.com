@@ -388,19 +388,19 @@ export function Resume(props: RouteComponentProps<{}>) {
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-github" />
                   </svg>
-                  <a href="http://github.com/webdesserts">webdesserts</a>
+                  <a href="http://github.com/webdesserts" target="_blank">webdesserts</a>
                 </li>
                 <li className="badge">
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-linkedin" />
                   </svg>
-                  <a href="http://linkedin.com/in/mcmullins">/in/mcmullins</a>
+                  <a href="http://linkedin.com/in/mcmullins" target="_blank">/in/mcmullins</a>
                 </li>
                 <li className="badge">
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-twitter" />
                   </svg>
-                  <a href="http://twitter.com/@webdesserts">@webdesserts</a>
+                  <a href="http://twitter.com/@webdesserts" target="_blank">@webdesserts</a>
                 </li>
               </ul>
             </section>
@@ -412,7 +412,7 @@ export function Resume(props: RouteComponentProps<{}>) {
             http://www.webdesserts.com/resume
           </a>{" "}
           and is available on{" "}
-          <a href="https://beakerbrowser.com/">the p2p web</a>
+          <a href="https://beakerbrowser.com/" target="_blank">the p2p web</a>
         </footer>
       </Paper>
 
