@@ -1,0 +1,5 @@
+{
+  "title": "webdesserts.com",
+  "fallback_page": "/index.html",
+  "web_root": "/build"
+}
