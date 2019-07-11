@@ -2,4 +2,4 @@
 dat.json
 *.log
 node_modules
-assets/build
+build

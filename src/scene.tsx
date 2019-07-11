@@ -172,11 +172,13 @@ export function SceneObject (props: SceneObjectProps) {
   let scene = useScene()
 
   React.useLayoutEffect(function trackLayout() {
-    let node = nodeRef.current;
-    scene.set(node, focused);
-    return () => {
-      scene.delete(node);
-    };
+    if (nodeRef.current) {
+      let node = nodeRef.current
+      scene.set(node, focused);
+      return () => {
+        scene.delete(node);
+      };
+    }
   }, [focused]);
 
   return (

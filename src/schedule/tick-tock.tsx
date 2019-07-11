@@ -42,7 +42,7 @@ export class TickTock extends React.Component<TickTock.Props> {
 
   render() {
     let { mode } = this.props
-    let ticks = [];
+    let ticks: React.ReactElement[] = [];
     let i = 0;
 
     let now = new Date(Date.now());
