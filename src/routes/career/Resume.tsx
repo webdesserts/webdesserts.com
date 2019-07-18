@@ -38,6 +38,14 @@ const Paper = styled.div`
     text-decoration: underline;
   }
 
+  h2 {
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    margin-bottom: 8px;
+  }
+
   .contact-line {
     display: grid;
     grid-auto-flow: column;
@@ -49,10 +57,6 @@ const Paper = styled.div`
     grid-auto-flow: row;
     grid-template-columns: 1fr auto;
     grid-gap: 16px;
-  }
-
-  .content h2 {
-    margin-bottom: 8px;
   }
 
   .experience ul {
@@ -74,7 +78,7 @@ const Paper = styled.div`
   }
 
   aside > * + * {
-    margin-top: 16px;
+    margin-top: 24px;
   }
 
   .skillgroup + .skillgroup {
@@ -119,17 +123,14 @@ const Paper = styled.div`
   .social li {
     display: grid;
     grid-auto-flow: column;
-    grid-gap: 4px;
-    border: 1px solid ${colors.mid};
+    grid-gap: 8px;
     font-weight: 700;
-    padding: 4px 8px;
     width: 136px;
-    border-radius: 4px;
-    text-align: right;
+    justify-content: start;
   }
 
   .social li + li {
-    margin-top: 4px;
+    margin-top: 8px;
   }
 
   .details {
@@ -187,12 +188,10 @@ export function Resume(props: RouteComponentProps<{}>) {
 
         <div className="content">
           <section className="experience">
-            <Heading size="medium" as="h2">
-              Experience
-            </Heading>
+            <Heading size="medium" as="h2">Experience</Heading>
 
             <Heading size="small" as="h3">
-              Lead UI Designer
+              Lead UI Designer / UI Developer
             </Heading>
             <div className="company">
               <a
@@ -206,19 +205,14 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="duration">October 2016 - May 2019</div>
             <ul>
               <li>Continued the work started at Integrity</li>
-              <li>Supported the product team in developing user workflows</li>
-              <li>
-                Developed wireframes and mockups for our larger projects
-              </li>
-              <li>
-                Worked with developers to implement designs and debug layout
-                issues
-              </li>
-              <li>Maintained core UI components</li>
+              <li>Worked with the product team to refine our user workflows</li>
+              <li>Developed wireframes and mockups for upcoming features</li>
+              <li>Worked with other developers to implement and mainntain those designs</li>
+              <li>Continued to maintain on our design system and core UI components</li>
             </ul>
 
             <Heading size="small" as="h3">
-              Web Developer
+              UI Developer
             </Heading>
             <div className="company">
               <a
@@ -231,13 +225,11 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="location">Temple, Texas</div>
             <div className="duration">May 2015 - October 2016</div>
             <ul>
-              <li>Developed scaffold for the frontend of new product</li>
-              <li>Developed the frontend build system</li>
-              <li>
-                Developed core UI components to be used across our system
-              </li>
-              <li>Helped clean up layout and design of existing pages</li>
-              <li>Advised on UX and UI issues when needed</li>
+              <li>Acted as an adviser on UX, UI, CSS, and JavaScript issues</li>
+              <li>Researched and layed out the foundation of the frontend for our new product</li>
+              <li>Took the existing product and developed a design system for future development</li>
+              <li>Developed our core UI components based on that design system</li>
+              <li>Developed and maintained our frontend's build system</li>
             </ul>
 
             <Heading size="small" as="h3">
@@ -251,18 +243,10 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="location">Belton, Texas</div>
             <div className="duration">January 2013 - May 2015</div>
             <ul>
-              <li>
-                Helped design and develop internal applications for the City
-                of San Diego
-              </li>
-              <li>Created mockups and graphics for application concepts</li>
-              <li>
-                Acted as the lead frontend developer on several projects
-              </li>
-              <li>
-                Worked to find creative ways to apply modern practices to
-                legacy software
-              </li>
+              <li>Helped design and develop internal applications for the City of San Diego</li>
+              <li>Created mockups and graphics for new applications</li>
+              <li>Acted as the lead frontend developer on several projects</li>
+              <li>Worked to find creative ways to apply modern practices to legacy software</li>
               <li>Advised on UX and UI issues when needed</li>
             </ul>
 
@@ -285,8 +269,8 @@ export function Resume(props: RouteComponentProps<{}>) {
                 server in preparation for a new CMS
               </li>
               <li>
-                Taught myself Ruby and wrote a script to do the job for me in
-                two weeks
+                Was originally supposed to manually move the files, but taught
+                myself Ruby and wrote a script to do the job for me
               </li>
               <li>
                 Designed the script to move the files, and rewrite links to
@@ -330,29 +314,35 @@ export function Resume(props: RouteComponentProps<{}>) {
               <div className="skillgroup">
                 <ul className="subgroup">
                   <li className="know">HTML</li>
-                  <li className="familiar">Markdown</li>
+                  <li className="know">Markdown</li>
                 </ul>
                 <ul className="subgroup">
                   <li className="know">CSS</li>
                   <li className="know">Sass</li>
-                  <li className="familiar">CSS-Modules</li>
-                  <li className="familiar">Styled-Components</li>
+                  <li className="know">CSS Modules</li>
+                  <li className="know">Styled Components</li>
                 </ul>
                 <ul className="subgroup">
                   <li className="know">JavaScript</li>
                   <li className="know">TypeScript</li>
-                  <li className="familiar">Rust</li>
+                  <li className="know">React</li>
                 </ul>
               </div>
 
               <div className="skillgroup">
                 <ul className="subgroup">
                   <li className="know">Node.js</li>
-                  <li className="know">React</li>
+                  <li className="familiar">Rust</li>
                 </ul>
                 <ul className="subgroup">
-                  <li className="know">Mocha</li>
+                  <li className="know">Express</li>
+                  <li className="familiar">AWS Lambda</li>
+                  <li className="familiar">SQL</li>
+                </ul>
+                <ul className="subgroup">
                   <li className="know">Webpack</li>
+                  <li className="know">Mocha</li>
+                  <li className="know">Babel</li>
                   <li className="familiar">Gulp</li>
                 </ul>
               </div>
@@ -369,12 +359,13 @@ export function Resume(props: RouteComponentProps<{}>) {
               <div className="skillgroup">
                 <ul className="subgroup">
                   <li className="know">Unix</li>
-                  <li className="know">Vim</li>
-                  <li className="know">Git/Github</li>
+                  <li className="know">git://</li>
+                  <li className="know">dat://</li>
                 </ul>
                 <ul className="subgroup">
-                  <li className="know">Beaker</li>
-                  <li className="familiar">dat://</li>
+                  <li className="know">Github</li>
+                  <li className="know">Trello</li>
+                  <li className="know">Jira</li>
                 </ul>
               </div>
             </section>
