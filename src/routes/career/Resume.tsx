@@ -207,7 +207,7 @@ export function Resume(props: RouteComponentProps<{}>) {
               <li>Continued the work started at Integrity</li>
               <li>Worked with the product team to refine our user workflows</li>
               <li>Developed wireframes and mockups for upcoming features</li>
-              <li>Worked with other developers to implement and mainntain those designs</li>
+              <li>Worked with other developers to implement and maintain those designs</li>
               <li>Continued to maintain on our design system and core UI components</li>
             </ul>
 
@@ -226,7 +226,7 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="duration">May 2015 - October 2016</div>
             <ul>
               <li>Acted as an adviser on UX, UI, CSS, and JavaScript issues</li>
-              <li>Researched and layed out the foundation of the frontend for our new product</li>
+              <li>Researched and laid out the foundation of the frontend for our new product</li>
               <li>Took the existing product and developed a design system for future development</li>
               <li>Developed our core UI components based on that design system</li>
               <li>Developed and maintained our frontend's build system</li>
@@ -314,6 +314,7 @@ export function Resume(props: RouteComponentProps<{}>) {
               <div className="skillgroup">
                 <ul className="subgroup">
                   <li className="know">HTML</li>
+                  <li className="know">SVG</li>
                   <li className="know">Markdown</li>
                 </ul>
                 <ul className="subgroup">
