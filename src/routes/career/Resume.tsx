@@ -204,11 +204,13 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="location">Temple, Texas</div>
             <div className="duration">October 2016 - May 2019</div>
             <ul>
-              <li>Continued the work started at Integrity</li>
+              <li>Began as a startup where I was one of four starting developers</li>
+              <li>Was responsible for our application's UI and its development</li>
+              <li>Built and maintained our frontend architecture and build system</li>
+              <li>Built and maintained our core React component library</li>
               <li>Worked with the product team to refine our user workflows</li>
               <li>Developed wireframes and mockups for upcoming features</li>
-              <li>Worked with other developers to implement and maintain those designs</li>
-              <li>Continued to maintain on our design system and core UI components</li>
+              <li>Guided developers as they implemented and maintained those designs</li>
             </ul>
 
             <Heading size="small" as="h3">
@@ -225,11 +227,11 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="location">Temple, Texas</div>
             <div className="duration">May 2015 - October 2016</div>
             <ul>
-              <li>Acted as an adviser on UX, UI, CSS, and JavaScript issues</li>
-              <li>Researched and laid out the foundation of the frontend for our new product</li>
-              <li>Took the existing product and developed a design system for future development</li>
-              <li>Developed our core UI components based on that design system</li>
-              <li>Developed and maintained our frontend's build system</li>
+              <li>Acted as an adviser on UI and UX issues</li>
+              <li>Helped train new developers on modern JavaScript and CSS</li>
+              <li>Took the existing product and developed a design system</li>
+              <li>Researched React, Redux, and other tools for an upcoming surgical product</li>
+              <li>Helped build out the foundation for what would eventually become Veracity Surgical</li>
             </ul>
 
             <Heading size="small" as="h3">
@@ -247,7 +249,7 @@ export function Resume(props: RouteComponentProps<{}>) {
               <li>Created mockups and graphics for new applications</li>
               <li>Acted as the lead frontend developer on several projects</li>
               <li>Worked to find creative ways to apply modern practices to legacy software</li>
-              <li>Advised on UX and UI issues when needed</li>
+              <li>Advised on UI and UX issues when needed</li>
             </ul>
 
             <Heading size="small" as="h3">
