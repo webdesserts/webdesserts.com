@@ -5,7 +5,7 @@ import { Heading, ButtonLink, layouts, NavButtonRight } from '../../common'
 import { colors, fonts } from '../../styles'
 
 const Layout = styled(layouts.Default)`
-  max-width: 600px;
+  max-width: 480px;
 `
 
 const SubHeading = styled.p`
@@ -45,10 +45,15 @@ export function Career(props: RouteComponentProps<{}>) {
   return (
     <Layout parent={{ path: "/", name: "Back" }}>
       <header>
-        <Heading as="h1" size="large">I'm looking for work</Heading>
-        <SubHeading>UI Design/Development – Remote or Austin, TX</SubHeading>
+        <Heading as="h1" size="large">My Career</Heading>
+        <SubHeading>I'm Happily Employeed</SubHeading>
       </header>
       <p>
+        I am currently not looking for work. You're still welcome to send
+        opportunities my way but there's a good chance I will not pursue them at
+        this time. Neverless, thank you for your interest!
+      </p>
+      {/* <p>
         I’m currently in between jobs and looking for my next role. If you
         need a developer who can implement your designer’s original vision or
         a designer who can speak your developer’s language, I can help.
@@ -59,7 +64,7 @@ export function Career(props: RouteComponentProps<{}>) {
         enjoy working with complex UIs and animations that are difficult to
         mock up or are limited by the technology. If you have a project that
         could use my skillset, contact me.
-      </p>
+      </p> */}
       <Footer>
         <Field>
           <LinkLabel>Email</LinkLabel>
@@ -69,9 +74,9 @@ export function Career(props: RouteComponentProps<{}>) {
           <LinkLabel>Linkedin</LinkLabel>
           <ButtonLink tabIndex={tabIndex} href="https://www.linkedin.com/in/mcmullins">/in/mcmullins</ButtonLink>
         </Field>
-        <ResumeNavButton tabIndex={tabIndex} to="/career/resume">
+        {/* <ResumeNavButton tabIndex={tabIndex} to="/career/resume">
           <header>Paper Resume</header>
-        </ResumeNavButton>
+        </ResumeNavButton> */}
       </Footer>
     </Layout>
   );

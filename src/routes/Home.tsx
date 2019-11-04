@@ -42,10 +42,10 @@ export function Home(props: RouteComponentProps<{}>) {
           <header>Community Highlights</header>
           <p>Things other people are working on</p>
         </NavButtonRight>
-        <NavButtonRight to="/career" tabIndex={tabIndex}>
+        {/* <NavButtonRight to="/career" tabIndex={tabIndex}>
           <header>Hire Me!</header>
           <p>Fulltime design or dev, Austin or remote</p>
-        </NavButtonRight>
+        </NavButtonRight> */}
       </NavList>
     </Layout>
   )
