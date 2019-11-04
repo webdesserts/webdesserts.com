@@ -7,10 +7,10 @@ const logger_urls = {
   Figma: "https://www.figma.com/file/YTQS6iZHzqMQPlewPs83sHLq/Web-Desserts?node-id=40%3A48",
   Github: "https://github.com/webdesserts/logger"
 }
-const webterm_urls = {
-  Figma: "https://www.figma.com/file/YTQS6iZHzqMQPlewPs83sHLq/Web-Desserts?node-id=217%3A0",
-  Github: "https://github.com/webdesserts/webterm"
-}
+// const webterm_urls = {
+//   Figma: "https://www.figma.com/file/YTQS6iZHzqMQPlewPs83sHLq/Web-Desserts?node-id=217%3A0",
+//   Github: "https://github.com/webdesserts/webterm"
+// }
 
 const Layout = styled(layouts.Default)`
   max-width: 356px;
@@ -26,11 +26,11 @@ export function Projects(props: RouteComponentProps<{}>) {
         with a birds-eye view. It’s my way of improving productivity while
         avoiding burnout.
       </Project>
-      <Divider />
+      {/* <Divider />
       <Project title="WebTerm" status="on hold" links={webterm_urls}>
         Inspired by Paul Frazee’s project of the same name. Explores what a
         terminal could look and function like in on a distributed website
-      </Project>
+      </Project> */}
     </Layout>
   );
 }
