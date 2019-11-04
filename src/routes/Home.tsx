@@ -24,15 +24,41 @@ export function Home(props: RouteComponentProps<{}>) {
   let career_start = DateTime.fromObject({ month: 1, year: 2012 })
   let years = Math.floor(Math.abs(career_start.diffNow().as("years")))
 
+  let link_props = {
+    target: "_blank",
+    rel: "noopener noreferrer",
+    tabIndex
+  }
+
   return (
     <Layout>
-      <Heading as="h1" size="large">Michael Mullins</Heading>
+      <Heading as="h1" size="large">
+        Michael Mullins
+      </Heading>
       <LinkList>
-        <li><ButtonLink href="https://twitter.com/webdesserts" tabIndex={tabIndex}>Twitter</ButtonLink></li>
-        <li><ButtonLink href="https://github.com/webdesserts" tabIndex={tabIndex}>Github</ButtonLink></li>
-        <li><ButtonLink href="https://twitch.tv/webdesserts" tabIndex={tabIndex}>Twitch</ButtonLink></li>
+        <li>
+          <ButtonLink href="https://twitter.com/webdesserts" {...link_props}>
+            Twitter
+          </ButtonLink>
+        </li>
+        <li>
+          <ButtonLink href="https://github.com/webdesserts" {...link_props}>
+            Github
+          </ButtonLink>
+        </li>
+        <li>
+          <ButtonLink href="https://twitch.tv/webdesserts" {...link_props}>
+            Twitch
+          </ButtonLink>
+        </li>
       </LinkList>
-      <p>Welcome! I am a designer/developer who has been working with the web for the past {years} years. I currently dabble in the Dat & Beaker Browser ecosystems. I also occasionally dabble with Color Spaces, SVG, and React. If you're new to any of this or you just have questions, feel free to reach out!</p>
+      <p>
+        Welcome! I am a designer/developer who has been working with the web for
+        the past {years} years. I currently dabble in the Dat & Beaker Browser
+        ecosystems. I also occasionally dabble with Color Spaces, SVG, and
+        React. If you're new to any of this or you just have questions, feel
+        free to reach out!
+      </p>
       <NavList>
         <NavButtonRight to="/projects" tabIndex={tabIndex}>
           <header>Projects</header>
@@ -48,5 +74,5 @@ export function Home(props: RouteComponentProps<{}>) {
         </NavButtonRight> */}
       </NavList>
     </Layout>
-  )
+  );
 }

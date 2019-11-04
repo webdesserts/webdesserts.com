@@ -165,6 +165,11 @@ const Paper = styled.div`
 export function Resume(props: RouteComponentProps<{}>) {
   let printButton = <Button onClick={() => print()}>Print Page</Button>
 
+  let link_props = {
+    target: "_blank",
+    rel: "noopener noreferrer",
+  }
+
   return (
     <Layout parent={{ path: "/career", name: "Back" }} action={printButton}>
       <Paper>
@@ -179,7 +184,7 @@ export function Resume(props: RouteComponentProps<{}>) {
               </a>
             </li>
             <li>
-              <a href="http://www.webdesserts.com" target="_blank">
+              <a href="http://www.webdesserts.com" {...link_props}>
                 www.webdesserts.com
               </a>
             </li>
@@ -196,7 +201,7 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="company">
               <a
                 href="https://www.zeiss.com/meditec/us/products/ophthalmology-optometry/veracity-surgical.html"
-                target="_blank"
+                {...link_props}
               >
                 Carl Zeiss Meditec Digital Innovations
               </a>
@@ -219,7 +224,7 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="company">
               <a
                 href="https://eyecareleaders.com/integrity-emr/advanced-emr/"
-                target="_blank"
+                {...link_props}
               >
                 Integrity Digital Solutions LLC
               </a>
@@ -238,7 +243,7 @@ export function Resume(props: RouteComponentProps<{}>) {
               Consultant
             </Heading>
             <div className="company">
-              <a href="http://www.cgi.com" target="_blank">
+              <a href="http://www.cgi.com" {...link_props}>
                 CGI Group Commercial
               </a>
             </div>
@@ -257,9 +262,7 @@ export function Resume(props: RouteComponentProps<{}>) {
             </Heading>
             <div className="company">
               <a
-                href="http://www.nrcs.usda.gov/wps/portal/nrcs/site/tx/home/"
-                target="_blank"
-              >
+                href="http://www.nrcs.usda.gov/wps/portal/nrcs/site/tx/home/" {...link_props}>
                 USDA-NRCS
               </a>
             </div>
@@ -295,7 +298,7 @@ export function Resume(props: RouteComponentProps<{}>) {
                 Computer Graphic Design
               </Heading>
               <div className="university">
-                <a href="http://www.umhb.edu" target="_blank">
+                <a href="http://www.umhb.edu" {...link_props}>
                   University of Mary Hardin-Baylor
                 </a>
               </div>
@@ -382,19 +385,19 @@ export function Resume(props: RouteComponentProps<{}>) {
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-github" />
                   </svg>
-                  <a href="http://github.com/webdesserts" target="_blank">webdesserts</a>
+                  <a href="http://github.com/webdesserts" {...link_props}>webdesserts</a>
                 </li>
                 <li className="badge">
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-linkedin" />
                   </svg>
-                  <a href="http://linkedin.com/in/mcmullins" target="_blank">/in/mcmullins</a>
+                  <a href="http://linkedin.com/in/mcmullins" {...link_props}>/in/mcmullins</a>
                 </li>
                 <li className="badge">
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-twitter" />
                   </svg>
-                  <a href="http://twitter.com/@webdesserts" target="_blank">@webdesserts</a>
+                  <a href="http://twitter.com/@webdesserts" {...link_props}>@webdesserts</a>
                 </li>
               </ul>
             </section>
@@ -402,11 +405,11 @@ export function Resume(props: RouteComponentProps<{}>) {
         </div>
         <footer>
           This Resumé is maintained at{" "}
-          <a href="http://www.webdesserts.com/resume" target="_blank">
+          <a href="http://www.webdesserts.com/resume" {...link_props}>
             http://www.webdesserts.com/resume
           </a>{" "}
           and is available on{" "}
-          <a href="https://beakerbrowser.com/" target="_blank">the p2p web</a>
+          <a href="https://beakerbrowser.com/"  {...link_props}>the p2p web</a>
         </footer>
       </Paper>
 
