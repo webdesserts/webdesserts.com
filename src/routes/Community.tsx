@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
 import { Project, Divider, layouts } from '../common'
 
-const dat_protocol_urls = {
-  Website: "https://dat.foundation/",
-  Github: "https://github.com/datproject"
+const hyper_protocol_urls = {
+  Website: "https://hypercore-protocol.org",
+  Github: "https://github.com/hypercore-protocol"
 }
 
 const beaker_urls = {
@@ -26,7 +26,7 @@ const Layout = styled(layouts.Default)`
 export function Community(props: RouteComponentProps<{}>) {
   return (
     <Layout parent={{ path: "/", name: "Back" }}>
-      <Project title="Dat Protocol" links={dat_protocol_urls}>
+      <Project title="Hyper Protocol" links={hyper_protocol_urls}>
         A distributed peer-to-peer protocol that enables you to easily share a
         folder across multiple computers. With one URL a friend can pull down
         your files and get live versioned updates. Many exciting new tools are
@@ -36,7 +36,7 @@ export function Community(props: RouteComponentProps<{}>) {
       <Divider />
       <Project title="Beaker Browser" links={beaker_urls}>
         A browser built on Chromium that adds supports for sites hosted using
-        the Dat protocol. Any sites you visit are downloaded from and seeded
+        the Hyper Protocol. Any sites you visit are downloaded from and seeded
         back to your peers. Because Dat doesn’t rely on traditional servers,
         users can create websites directly in the browser opening up the field
         to a new generation of creators.
