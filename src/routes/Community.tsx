@@ -3,17 +3,17 @@ import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
 import { Project, Divider, layouts, hrefs } from '../common'
 
-const hyper_protocol_urls = {
+const hyper_protocol_links = {
   Website: hrefs.hyper.website,
   Github: hrefs.hyper.github
 }
 
-const beaker_urls = {
+const beaker_links = {
   Website: hrefs.beaker.website,
   Github: hrefs.beaker.github
 }
 
-const cabal_urls = {
+const cabal_links = {
   Website: hrefs.cabal.website,
   Github: hrefs.cabal.github
 }
@@ -26,7 +26,7 @@ const Layout = styled(layouts.Default)`
 export function Community(props: RouteComponentProps<{}>) {
   return (
     <Layout parent={{ path: "/", name: "Back" }}>
-      <Project title="Hyper Protocol" links={hyper_protocol_urls}>
+      <Project title="Hyper Protocol" links={hyper_protocol_links}>
         A distributed peer-to-peer protocol that enables you to easily share a
         folder across multiple computers. With one URL a friend can pull down
         your files and get live versioned updates. Many exciting new tools are
@@ -34,15 +34,15 @@ export function Community(props: RouteComponentProps<{}>) {
         on it.
       </Project>
       <Divider />
-      <Project title="Beaker Browser" links={beaker_urls}>
+      {/* <Project title="Beaker Browser" links={beaker_links}>
         A browser built on Chromium that adds supports for sites hosted using
         the Hyper Protocol. Any sites you visit are downloaded from and seeded
         back to your peers. Because Hyper doesn’t rely on traditional servers,
         users can create websites directly in the browser opening up the field
         to a new generation of creators.
       </Project>
-      <Divider />
-      <Project title="Cabal" links={cabal_urls}>
+      <Divider /> */}
+      <Project title="Cabal" links={cabal_links}>
         The P2P equivilant of an IRC client. IRC has stood the test of time,
         but it’s use is still mostly limited to the dev community. One reason
         for this is the amount of effort it takes to create and join channels.

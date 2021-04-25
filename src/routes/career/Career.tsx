@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
-import { Heading, ButtonLink, layouts, NavButtonRight } from '../../common'
+import { Heading, ButtonLink, layouts, NavButtonRight, hrefs } from '../../common'
 import { colors, fonts } from '../../styles'
 
 const Layout = styled(layouts.Default)`
@@ -68,11 +68,11 @@ export function Career(props: RouteComponentProps<{}>) {
       <Footer>
         <Field>
           <LinkLabel>Email</LinkLabel>
-          <ButtonLink tabIndex={tabIndex} href="mailto:michael@webdesserts.com">michael@webdesserts.com</ButtonLink>
+          <ButtonLink tabIndex={tabIndex} href={hrefs.personal.email}>michael@webdesserts.com</ButtonLink>
         </Field>
         <Field>
           <LinkLabel>Linkedin</LinkLabel>
-          <ButtonLink tabIndex={tabIndex} href="https://www.linkedin.com/in/mcmullins">/in/mcmullins</ButtonLink>
+          <ButtonLink tabIndex={tabIndex} href={hrefs.personal.linkedin}>/in/mcmullins</ButtonLink>
         </Field>
         {/* <ResumeNavButton tabIndex={tabIndex} to="/career/resume">
           <header>Paper Resume</header>

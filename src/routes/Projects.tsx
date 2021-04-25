@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
 import { Project, layouts, hrefs } from '../common'
 
-const logger_urls = {
+const logger_links = {
   Figma: hrefs.logger.figma,
   Github: hrefs.logger.github
 }
@@ -16,7 +16,7 @@ const Layout = styled(layouts.Default)`
 export function Projects(props: RouteComponentProps<{}>) {
   return (
     <Layout parent={{ path: "/", name: "Back" }}>
-      <Project title="Logger" status="early development" links={logger_urls}>
+      <Project title="Logger" status="early development" links={logger_links}>
         A personal time tracker focused on producing consistant and healthy
         work habits. Not intended to be a strict log, but more of a pomodoro
         with a birds-eye view. It’s my way of improving productivity while
