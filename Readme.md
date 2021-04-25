@@ -1,12 +1,10 @@
 # webdesserts.com
 
-This is the repository for my personal website. The site is built with React, Typescript, and styled-components and hosted on the [p2p web][1].
+This is the repository for my personal website. The site is built with React, Typescript, and styled-components.
 
 ## Getting Started
 
-If you're wanting to build your own site based on this one, the easiest way to get started is to open the [p2p version of this website][2] in beaker browser and [fork it from there][3].
-
-To get started, you'll first need to install [npm][4] ([yarn][5] works fine as well) and run the following:
+To get started, you'll first need to install [npm][1] ([yarn][2] works fine as well) and run the following:
 
 ```
 npm install
@@ -15,13 +13,16 @@ npm install
 You can then build the project by running the `start` script:
 
 ```
-npm run start
+npm run dev
 ```
 
-This will watch for changes and rebuild the website when it detects an update. If you're using Beaker Browser, you can preview the site there, otherwise the `start` script also starts a dev server at `localhost:3000`.
+This will spin up a dev server at `localhost:3000`.
 
-[1]: https://beakerbrowser.com
-[2]: dat://webdesserts.com
-[3]: https://beakerbrowser.com/docs/tour/#forking-or-copying-a-website
-[4]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
-[5]: https://yarnpkg.com/lang/en/docs/install
+For more information on available scripts you can run:
+
+```
+npm run help
+```
+
+[1]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+[2]: https://yarnpkg.com/lang/en/docs/install

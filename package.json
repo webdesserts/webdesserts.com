@@ -4,7 +4,8 @@
   "author": "Michael Mullins <michael@webdesserts.com>",
   "private": true,
   "scripts": {
-    "start": "app-scripts start",
+    "help": "app-scripts help",
+    "dev": "app-scripts dev",
     "build": "app-scripts build"
   },
   "devDependencies": {
@@ -14,10 +15,11 @@
   "dependencies": {
     "@types/lodash": "^4.14.134",
     "@types/luxon": "^1.15.1",
-    "@types/react-router": "^5.2",
+    "@types/react-router": "^5",
     "@types/react-router-dom": "^4.3.0",
     "@types/styled-components": "^5",
-    "@webdesserts/app-scripts": "^0.2.0",
+    "@webdesserts/app-scripts": "^0.6.0",
+    "core-js": "^3",
     "immer": "^3.1.3",
     "lodash.throttle": "^4.1.1",
     "luxon": "^1.16.0",
@@ -27,6 +29,7 @@
     "react-motion": "^0.5.2",
     "react-router": "^5.2",
     "react-router-dom": "^5.2",
+    "regenerator-runtime": "^0.13.3",
     "styled-components": "^5",
     "typescript": "^4"
   }
