@@ -20,7 +20,7 @@
     "@types/styled-components": "^5",
     "@webdesserts/app-scripts": "^0.6.0",
     "core-js": "^3",
-    "immer": "^3.1.3",
+    "immer": "^8.0.1",
     "lodash.throttle": "^4.1.1",
     "luxon": "^1.16.0",
     "react": "^16.8",
