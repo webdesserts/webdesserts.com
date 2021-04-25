@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
 import styled from 'styled-components'
-import { NavList,ButtonLink, layouts, Heading, NavButtonRight } from '../common'
+import { NavList,ButtonLink, layouts, Heading, NavButtonRight, hrefs } from '../common'
 import { DateTime } from 'luxon'
 
 let LinkList = styled.ul`
@@ -37,26 +37,26 @@ export function Home(props: RouteComponentProps<{}>) {
       </Heading>
       <LinkList>
         <li>
-          <ButtonLink href="https://twitter.com/webdesserts" {...link_props}>
+          <ButtonLink href={hrefs.webdesserts.twitter} {...link_props}>
             Twitter
           </ButtonLink>
         </li>
         <li>
-          <ButtonLink href="https://github.com/webdesserts" {...link_props}>
+          <ButtonLink href={hrefs.webdesserts.github} {...link_props}>
             Github
           </ButtonLink>
         </li>
         <li>
-          <ButtonLink href="https://twitch.tv/webdesserts" {...link_props}>
+          <ButtonLink href={hrefs.webdesserts.twitch} {...link_props}>
             Twitch
           </ButtonLink>
         </li>
       </LinkList>
       <p>
         Welcome! I am a designer/developer who has been working with the web for
-        the past {years} years. I currently dabble in the Dat & Beaker Browser
-        ecosystems. I also occasionally dabble with Color Spaces, SVG, and
-        React. If you're new to any of this or you just have questions, feel
+        the past {years} years. I currently dabble in the <a href={hrefs.hyper.website}>Hypercore</a>{' '}
+        ecosystem in my spare time. I also occasionally dabble with Color Spaces, SVG, and React.
+        If you're new to any of this or you just have questions, feel
         free to reach out!
       </p>
       <NavList>

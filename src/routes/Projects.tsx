@@ -1,16 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
-import { Project, Divider, layouts } from '../common'
+import { Project, layouts, hrefs } from '../common'
 
 const logger_urls = {
-  Figma: "https://www.figma.com/file/YTQS6iZHzqMQPlewPs83sHLq/Web-Desserts?node-id=40%3A48",
-  Github: "https://github.com/webdesserts/logger"
+  Figma: hrefs.logger.figma,
+  Github: hrefs.logger.github
 }
-// const webterm_urls = {
-//   Figma: "https://www.figma.com/file/YTQS6iZHzqMQPlewPs83sHLq/Web-Desserts?node-id=217%3A0",
-//   Github: "https://github.com/webdesserts/webterm"
-// }
 
 const Layout = styled(layouts.Default)`
   max-width: 356px;
@@ -26,11 +22,6 @@ export function Projects(props: RouteComponentProps<{}>) {
         with a birds-eye view. It’s my way of improving productivity while
         avoiding burnout.
       </Project>
-      {/* <Divider />
-      <Project title="WebTerm" status="on hold" links={webterm_urls}>
-        Inspired by Paul Frazee’s project of the same name. Explores what a
-        terminal could look and function like in on a distributed website
-      </Project> */}
     </Layout>
   );
 }

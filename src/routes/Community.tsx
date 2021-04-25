@@ -1,21 +1,21 @@
 import * as React from 'react'
 import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
-import { Project, Divider, layouts } from '../common'
+import { Project, Divider, layouts, hrefs } from '../common'
 
 const hyper_protocol_urls = {
-  Website: "https://hypercore-protocol.org",
-  Github: "https://github.com/hypercore-protocol"
+  Website: hrefs.hyper.website,
+  Github: hrefs.hyper.github
 }
 
 const beaker_urls = {
-  Website: "https://beakerbrowser.com/",
-  Github: "https://github.com/beakerbrowser"
+  Website: hrefs.beaker.website,
+  Github: hrefs.beaker.github
 }
 
 const cabal_urls = {
-  Website: "https://cabal-club.github.io/",
-  Github: "https://github.com/cabal-club"
+  Website: hrefs.cabal.website,
+  Github: hrefs.cabal.github
 }
 
 const Layout = styled(layouts.Default)`
@@ -37,7 +37,7 @@ export function Community(props: RouteComponentProps<{}>) {
       <Project title="Beaker Browser" links={beaker_urls}>
         A browser built on Chromium that adds supports for sites hosted using
         the Hyper Protocol. Any sites you visit are downloaded from and seeded
-        back to your peers. Because Dat doesn’t rely on traditional servers,
+        back to your peers. Because Hyper doesn’t rely on traditional servers,
         users can create websites directly in the browser opening up the field
         to a new generation of creators.
       </Project>
