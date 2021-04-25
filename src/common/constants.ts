@@ -8,6 +8,10 @@ export const hrefs = {
     github: "https://github.com/webdesserts", 
     twitch: "https://twitch.tv/webdesserts",
   },
+  ctzn: {
+    website: "https://ctznry.com/",
+    github: "https://github.com/pfrazee/ctznry",
+  },
   hyper: {
     website: "https://hypercore-protocol.org/",
     github: "https://github.com/hypercore-protocol"

@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
 import { Project, Divider, layouts, hrefs } from '../common'
 
+const ctzn_links = {
+  Website: hrefs.ctzn.website,
+  Github: hrefs.ctzn.github
+}
+
 const hyper_protocol_links = {
   Website: hrefs.hyper.website,
   Github: hrefs.hyper.github
@@ -26,6 +31,13 @@ const Layout = styled(layouts.Default)`
 export function Community(props: RouteComponentProps<{}>) {
   return (
     <Layout parent={{ path: "/", name: "Back" }}>
+      <Project title="Ctzn" links={ctzn_links} status="alpha">
+        An extensible social network with a focus on political design. It gives 
+        communities creative freedom to design their own unique moderation
+        and reward systems. Designed to avoid social "lock-in", it will allow
+        users to easily migrate to other hosting providers and even custom UIs.
+      </Project>
+      <Divider />
       <Project title="Hyper Protocol" links={hyper_protocol_links}>
         A distributed peer-to-peer protocol that enables you to easily share a
         folder across multiple computers. With one URL a friend can pull down
