@@ -407,9 +407,7 @@ export function Resume(props: RouteComponentProps<{}>) {
           This Resumé is maintained at{" "}
           <a href="http://www.webdesserts.com/resume" {...link_props}>
             http://www.webdesserts.com/resume
-          </a>{" "}
-          and is available on{" "}
-          <a href="https://beakerbrowser.com/"  {...link_props}>the p2p web</a>
+          </a>
         </footer>
       </Paper>
 
