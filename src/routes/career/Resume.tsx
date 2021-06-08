@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import { RouteComponentProps } from "react-router";
-import { layouts, Button, Heading } from "../../common";
+import { layouts, Button, Heading, hrefs } from "../../common";
 import { colors, fonts } from "../../styles";
 
 const Layout = styled(layouts.Default)`
@@ -179,13 +179,13 @@ export function Resume(props: RouteComponentProps<{}>) {
           </Heading>
           <ul className="contact-line">
             <li>
-              <a href="mailto:michael@webdesserts.com">
+              <a href={hrefs.personal.email}>
                 michael@webdesserts.com
               </a>
             </li>
             <li>
-              <a href="http://www.webdesserts.com" {...link_props}>
-                www.webdesserts.com
+              <a href={hrefs.personal.website} {...link_props}>
+                {hrefs.personal.website}
               </a>
             </li>
           </ul>
@@ -194,6 +194,29 @@ export function Resume(props: RouteComponentProps<{}>) {
         <div className="content">
           <section className="experience">
             <Heading size="medium" as="h2">Experience</Heading>
+
+            <Heading size="small" as="h3">
+              Senior Software Developer
+            </Heading>
+            <div className="company">
+              <a
+                href="https://www.insurity.com/solutions/insurity-data-analytics-solutions/spatialkey-solutions/"
+                {...link_props}
+              >
+                Insurity Data Analytics Solutions
+              </a>
+            </div>
+            <div className="location">Remote</div>
+            <div className="duration">September 2019 - Present</div>
+            <ul>
+              <li>Serving as the lead client developer for our Event Response app</li>
+              <li>Responsible for the architectural direction of the client</li>
+              <li>Planning and developing major cross-app features</li>
+              <li>Working across teams to negotiate design & implementation</li>
+              <li>Working to improve test coverage across our core</li>
+              <li>Optimizing and documenting our process</li>
+              <li>Training new developers on our codebase, product, and process</li>
+            </ul>
 
             <Heading size="small" as="h3">
               Lead UI Designer / UI Developer
@@ -257,7 +280,7 @@ export function Resume(props: RouteComponentProps<{}>) {
               <li>Advised on UI and UX issues when needed</li>
             </ul>
 
-            <Heading size="small" as="h3">
+            {/* <Heading size="small" as="h3">
               Web Intern
             </Heading>
             <div className="company">
@@ -285,7 +308,7 @@ export function Resume(props: RouteComponentProps<{}>) {
                 Helped Texas become the first site to be migrated to the new
                 CMS
               </li>
-            </ul>
+            </ul> */}
           </section>
 
           <aside>
@@ -342,21 +365,21 @@ export function Resume(props: RouteComponentProps<{}>) {
                 </ul>
                 <ul className="subgroup">
                   <li className="know">Express</li>
-                  <li className="familiar">AWS Lambda</li>
+                  <li className="familiar">Serverless</li>
                   <li className="familiar">SQL</li>
                 </ul>
                 <ul className="subgroup">
                   <li className="know">Webpack</li>
-                  <li className="know">Mocha</li>
                   <li className="know">Babel</li>
+                  <li className="know">Jest</li>
                   <li className="familiar">Gulp</li>
                 </ul>
               </div>
 
               <div className="skillgroup">
                 <ul className="subgroup">
-                  <li className="know">Sketch</li>
                   <li className="know">Figma</li>
+                  <li className="familiar">Sketch</li>
                   <li className="familiar">Photoshop</li>
                   <li className="familiar">Illustator</li>
                 </ul>
@@ -366,12 +389,13 @@ export function Resume(props: RouteComponentProps<{}>) {
                 <ul className="subgroup">
                   <li className="know">Unix</li>
                   <li className="know">git://</li>
-                  <li className="know">dat://</li>
+                  <li className="know">hyper://</li>
+                  <li className="know">JSON Schema</li>
                 </ul>
                 <ul className="subgroup">
                   <li className="know">Github</li>
-                  <li className="know">Trello</li>
                   <li className="know">Jira</li>
+                  <li className="know">Trello</li>
                 </ul>
               </div>
             </section>
@@ -385,19 +409,19 @@ export function Resume(props: RouteComponentProps<{}>) {
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-github" />
                   </svg>
-                  <a href="http://github.com/webdesserts" {...link_props}>webdesserts</a>
+                  <a href={hrefs.personal.github} {...link_props}>webdesserts</a>
                 </li>
                 <li className="badge">
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-linkedin" />
                   </svg>
-                  <a href="http://linkedin.com/in/mcmullins" {...link_props}>/in/mcmullins</a>
+                  <a href={hrefs.personal.linkedin} {...link_props}>/in/webdesserts</a>
                 </li>
                 <li className="badge">
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-twitter" />
                   </svg>
-                  <a href="http://twitter.com/@webdesserts" {...link_props}>@webdesserts</a>
+                  <a href={hrefs.personal.twitter} {...link_props}>@webdesserts</a>
                 </li>
               </ul>
             </section>
@@ -405,8 +429,8 @@ export function Resume(props: RouteComponentProps<{}>) {
         </div>
         <footer>
           This Resumé is maintained at{" "}
-          <a href="http://www.webdesserts.com/resume" {...link_props}>
-            http://www.webdesserts.com/resume
+          <a href={`${hrefs.personal.website}/resume`} {...link_props}>
+            {hrefs.personal.website}
           </a>
         </footer>
       </Paper>

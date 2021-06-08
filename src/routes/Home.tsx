@@ -37,17 +37,17 @@ export function Home(props: RouteComponentProps<{}>) {
       </Heading>
       <LinkList>
         <li>
-          <ButtonLink href={hrefs.webdesserts.twitter} {...link_props}>
+          <ButtonLink href={hrefs.personal.twitter} {...link_props}>
             Twitter
           </ButtonLink>
         </li>
         <li>
-          <ButtonLink href={hrefs.webdesserts.github} {...link_props}>
+          <ButtonLink href={hrefs.personal.github} {...link_props}>
             Github
           </ButtonLink>
         </li>
         <li>
-          <ButtonLink href={hrefs.webdesserts.twitch} {...link_props}>
+          <ButtonLink href={hrefs.personal.twitch} {...link_props}>
             Twitch
           </ButtonLink>
         </li>

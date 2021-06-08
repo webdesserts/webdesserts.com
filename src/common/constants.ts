@@ -1,9 +1,8 @@
 export const hrefs = {
   personal: {
     email: "mailto:michael@webdesserts.com",
-    linkedin: "https://www.linkedin.com/in/mcmullins"
-  },
-  webdesserts: {
+    website: "https://webdesserts.com",
+    linkedin: "https://www.linkedin.com/in/webdesserts",
     twitter: "https://twitter.com/webdesserts" ,
     github: "https://github.com/webdesserts", 
     twitch: "https://twitch.tv/webdesserts",
