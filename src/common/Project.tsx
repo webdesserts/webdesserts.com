@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import { colors } from '../styles'
-import { Heading, ButtonLink } from './'
+import { Heading, ButtonLink, colors } from '@webdesserts/ui'
 
 interface ProjectProps {
   title: string,

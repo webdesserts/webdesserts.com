@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import { RouteComponentProps } from "react-router";
-import { layouts, Button, Heading, hrefs } from "../../common";
-import { colors, fonts } from "../../styles";
+import { layouts, hrefs } from "../../common";
+import { colors, fonts, Button, Heading, } from "@webdesserts/ui";
 
 const Layout = styled(layouts.Default)`
   height: 11in;

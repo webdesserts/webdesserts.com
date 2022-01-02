@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
-import { colors, fonts, mixins } from '../styles'
 import styled, { css } from 'styled-components'
 import IconChevronRight from '../icons/icon-chevron-right.svg'
 import IconChevronLeft from '../icons/icon-chevron-left.svg'
+import { colors, fonts, mixins } from '@webdesserts/ui'
 
 export { NavList, NavButtonRight, NavButtonLeft }
 

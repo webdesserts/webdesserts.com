@@ -3,7 +3,7 @@ import { Home, Projects, Community, Career, Resume } from './routes'
 import { Scene } from './scene'
 import { BrowserRouter, Redirect, Switch } from "react-router-dom"
 import { Page } from './page'
-import { GlobalStyles, ResetStyles } from './styles'
+import { GlobalStyles, ResetStyles } from '@webdesserts/ui'
 import styled from 'styled-components'
 
 let ScrollView = styled.div`

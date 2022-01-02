@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled, { css } from 'styled-components';
 import { Link, LinkProps } from 'react-router-dom'
 import IconChevronLeft from '../icons/icon-chevron-left.svg';
-import { fonts, colors, mixins } from '../styles'
+import { fonts, colors, mixins } from '@webdesserts/ui'
 
 type ParentLink = { path: LinkProps["to"], name?: string }
 

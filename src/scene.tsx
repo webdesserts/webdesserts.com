@@ -3,7 +3,7 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { Motion, spring } from 'react-motion'
 import { Model } from './utils/Model'
 import throttle from 'lodash.throttle'
-import { colors } from './styles'
+import { colors } from '@webdesserts/ui'
 
 export type Point = { x: number, y: number }
 export type Size = { width: number, height: number }

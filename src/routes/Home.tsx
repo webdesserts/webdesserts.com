@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
 import styled from 'styled-components'
-import { NavList,ButtonLink, layouts, Heading, NavButtonRight, hrefs } from '../common'
+import { NavList, layouts, NavButtonRight, hrefs } from '../common'
 import { DateTime } from 'luxon'
+import {Heading, ButtonLink} from '@webdesserts/ui';
 
 let LinkList = styled.ul`
   list-style: none;

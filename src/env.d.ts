@@ -1,7 +1,2 @@
 /// <reference types="styled-components/cssprop" />
-
-declare module '*.svg' {
-  import * as React from 'react';
-  const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-  export default ReactComponent;
-}
+/// <reference types="@webdesserts/app-scripts" />

@@ -1,3 +1,4 @@
 {
-  "extends": "@webdesserts/app-scripts/app.tsconfig.json"
+  "extends": "@webdesserts/app-scripts/app.tsconfig.json",
+  "include": ["src"]
 }

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from 'styled-components';
 import { RouteComponentProps } from 'react-router'
-import { Heading, ButtonLink, layouts, NavButtonRight, hrefs } from '../../common'
-import { colors, fonts } from '../../styles'
+import { layouts, NavButtonRight, hrefs } from '../../common'
+import { colors, fonts, Heading, ButtonLink } from '@webdesserts/ui'
 
 const Layout = styled(layouts.Default)`
   max-width: 480px;
