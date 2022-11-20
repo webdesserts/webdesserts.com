@@ -55,24 +55,24 @@ export function Home(props: RouteComponentProps<{}>) {
       </LinkList>
       <p>
         Welcome! I am a designer/developer who has been working with the web for
-        the past {years} years. I currently dabble in the{" "}
-        <a href={hrefs.hyper.website}>Hypercore</a> ecosystem in my spare time.
-        I also occasionally dabble with Color Spaces, SVG, and React. If you're
-        new to any of this or you just have questions, feel free to reach out!
+        the past {years} years. I currently play around in the Rust ecosystem in
+        my spare time. I also regularly dabble with Color Spaces, SVG, and
+        React. If you're new to any of this or you just have questions, feel
+        free to reach out!
       </p>
       <NavList>
         <NavButtonRight to="/projects" tabIndex={tabIndex}>
           <header>Projects</header>
-          <p>Things that I’ve been working on</p>
+          <p>Things that I've been working on</p>
         </NavButtonRight>
         <NavButtonRight to="/community" tabIndex={tabIndex}>
           <header>Community Highlights</header>
           <p>Things other people are working on</p>
         </NavButtonRight>
-        {/* <NavButtonRight to="/career" tabIndex={tabIndex}>
+        <NavButtonRight to="/career" tabIndex={tabIndex}>
           <header>Hire Me!</header>
-          <p>Fulltime design or dev, Austin or remote</p>
-        </NavButtonRight> */}
+          <p>Fulltime design & dev, Remote</p>
+        </NavButtonRight>
       </NavList>
     </Layout>
   );
