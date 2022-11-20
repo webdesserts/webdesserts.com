@@ -2,26 +2,17 @@ import * as React from "react";
 import styled from "styled-components";
 import { RouteComponentProps } from "react-router";
 import { Project, layouts, hrefs } from "../common";
-import { Divider } from "@webdesserts/ui";
+import { colors, Divider, fonts } from "@webdesserts/ui";
+import { Note } from "../common/Note";
 
-const ctzn_links = {
-  Website: hrefs.ctzn.website,
-  Github: hrefs.ctzn.github,
+const at_protocol_links = {
+  Website: hrefs.at_protocol.website,
+  Github: hrefs.at_protocol.github,
 };
 
-const hyper_protocol_links = {
-  Website: hrefs.hyper.website,
-  Github: hrefs.hyper.github,
-};
-
-const beaker_links = {
-  Website: hrefs.beaker.website,
-  Github: hrefs.beaker.github,
-};
-
-const cabal_links = {
-  Website: hrefs.cabal.website,
-  Github: hrefs.cabal.github,
+const nushell_links = {
+  Website: hrefs.nushell.website,
+  Github: hrefs.nushell.github,
 };
 
 const Layout = styled(layouts.Default)`
@@ -32,35 +23,32 @@ const Layout = styled(layouts.Default)`
 export function Community(props: RouteComponentProps<{}>) {
   return (
     <Layout parent={{ path: "/", name: "Back" }}>
-      <Project title="Ctzn" links={ctzn_links} status="alpha">
-        An extensible social network with a focus on political design. It gives
-        communities creative freedom to design their own unique moderation and
-        reward systems. Designed to avoid social "lock-in", it will allow users
-        to easily migrate to other hosting providers and even custom UIs.
+      <Note>
+        A set of projects that I like and I want you to know about. Note, I am
+        not actually involved in these projects and am not taking any form of
+        credit for them.
+      </Note>
+      <Divider />
+      <Project
+        title="ATProtocol"
+        links={at_protocol_links}
+        status="closed beta"
+      >
+        An experimental social networking protocol created by the Bluesky team.
+        The team, originally split off from Twitter prior to the change in
+        ownership, is working to define a set of extensible technologies that
+        ensures future social networks aren't locked down to a specific company.
+        If you aren't happy with the state of social networks and believe there
+        can be something better, please check them out.
       </Project>
       <Divider />
-      <Project title="Hyper Protocol" links={hyper_protocol_links}>
-        A distributed peer-to-peer protocol that enables you to easily share a
-        folder across multiple computers. With one URL a friend can pull down
-        your files and get live versioned updates. Many exciting new tools are
-        being built on this protocol and you should definitely keep your eyes on
-        it.
-      </Project>
-      <Divider />
-      {/* <Project title="Beaker Browser" links={beaker_links}>
-        A browser built on Chromium that adds supports for sites hosted using
-        the Hyper Protocol. Any sites you visit are downloaded from and seeded
-        back to your peers. Because Hyper doesn’t rely on traditional servers,
-        users can create websites directly in the browser opening up the field
-        to a new generation of creators.
-      </Project>
-      <Divider /> */}
-      <Project title="Cabal" links={cabal_links}>
-        The P2P equivilant of an IRC client. IRC has stood the test of time, but
-        it’s use is still mostly limited to the dev community. One reason for
-        this is the amount of effort it takes to create and join channels. With
-        Cabal you can do all of that without ever having to spin up a server.
-        Cabal is still in its early stages, but it already looks very promising.
+      <Project title="Nushell" links={nushell_links}>
+        An interesting project that is tryign to rethink what a modern shell
+        should look like. What if inputs and outputs weren't just strings? What
+        if commands used real types? What if autocompletion was built in? What
+        if documentation was auto-generated? Nushell plays around with all of
+        this while providing compatibility layers for your existing shell
+        commands.
       </Project>
     </Layout>
   );

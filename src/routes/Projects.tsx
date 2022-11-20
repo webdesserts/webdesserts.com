@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { RouteComponentProps } from "react-router";
 import { Project, layouts, hrefs } from "../common";
+import { Divider } from "@webdesserts/ui";
+import { Note } from "../common/Note";
 
 const dot_cli_links = {
   Github: hrefs.dots_cli.github,
@@ -16,7 +18,17 @@ const Layout = styled(layouts.Default)`
 export function Projects(props: RouteComponentProps<{}>) {
   return (
     <Layout parent={{ path: "/", name: "Back" }}>
-      <Project title="Dot Cli" status="early development" links={dot_cli_links}>
+      <Note>
+        A set of projects that I work on in my spare time. I don't get much time
+        to work on side-projects these days, but when I do, these are the ones
+        I'm interested in.
+      </Note>
+      <Divider />
+      <Project
+        title="Dots Cli"
+        status="early development"
+        links={dot_cli_links}
+      >
         The cli I use to manage all of my dotfiles. It will pull down a repo
         containing your dotfiles, and using a declaritive config, it will
         automatically link the files where they belong, communicating what

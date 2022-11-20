@@ -32,4 +32,12 @@ export const hrefs = {
     github: "https://github.com/webdesserts/dots-cli",
     crate: "https://crates.io/crates/dots",
   },
+  at_protocol: {
+    website: "https://atproto.com/",
+    github: "https://github.com/bluesky-social/atproto",
+  },
+  nushell: {
+    website: "https://www.nushell.sh/",
+    github: "https://github.com/nushell/nushell",
+  },
 };
