@@ -48,25 +48,16 @@ export function Career(props: RouteComponentProps<{}>) {
         <Heading as="h1" size="large">
           My Career
         </Heading>
-        <SubHeading>I'm Happily Employeed</SubHeading>
       </header>
       <p>
-        I am currently not looking for work. You're still welcome to send
-        opportunities my way but there's a good chance I will not pursue them at
-        this time. Neverless, thank you for your interest!
+        If you need a developer who can implement your designer's original
+        vision or take a rough prototype and fill in the gaps, I can help. I am
+        most comfortable in a web frontend environment working with React &amp;
+        CSS, but I am always open to learning something new. I especially enjoy
+        working with complex UIs and animations that are difficult to mock up or
+        are limited by the technology. If you have a project that could use my
+        skillset, contact me.
       </p>
-      {/* <p>
-        I’m currently in between jobs and looking for my next role. If you
-        need a developer who can implement your designer’s original vision or
-        a designer who can speak your developer’s language, I can help.
-      </p>
-      <p>
-        I am most comfortable in a web frontend environment working with React
-        &amp; CSS, but I am always open to learning something new. I especially
-        enjoy working with complex UIs and animations that are difficult to
-        mock up or are limited by the technology. If you have a project that
-        could use my skillset, contact me.
-      </p> */}
       <Footer>
         <Field>
           <LinkLabel>Email</LinkLabel>
