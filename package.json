@@ -10,8 +10,8 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@types/react": "^17.0.38",
-    "@types/react-dom": "^17.0.11",
+    "@types/react": "18",
+    "@types/react-dom": "18",
     "husky": ">=6",
     "lint-staged": ">=10",
     "prettier": "^2.7.1"
@@ -20,23 +20,23 @@
     "@types/lodash": "^4.14.134",
     "@types/luxon": "^1.15.1",
     "@types/react-router": "^5",
-    "@types/react-router-dom": "^4.3.0",
+    "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5",
-    "@webdesserts/app-scripts": "^0.8.0",
+    "@webdesserts/app-scripts": "^0.9.0",
     "@webdesserts/ui": "^0.1.2",
     "core-js": "^3",
     "immer": "^3.1.3",
     "lodash.throttle": "^4.1.1",
     "luxon": "^1.16.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-is": "^16.8",
+    "react": "18",
+    "react-dom": "18",
+    "react-is": "18",
     "react-motion": "^0.5.2",
     "react-router": "^5.2",
     "react-router-dom": "^5.2",
     "regenerator-runtime": "^0.13.3",
     "styled-components": "^5",
-    "typescript": "^4"
+    "typescript": "^4.9.3"
   },
   "lint-staged": {
     "*.{js,css,md}": "prettier --write"

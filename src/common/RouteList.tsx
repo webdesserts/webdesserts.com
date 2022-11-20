@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 import IconChevronRight from "../icons/icon-chevron-right.svg";
@@ -7,7 +7,7 @@ import { colors, fonts, mixins } from "@webdesserts/ui";
 
 export { NavList, NavButtonRight, NavButtonLeft };
 
-function NavButtonRight(props: NavLink["props"]) {
+function NavButtonRight(props: ComponentProps<typeof NavLink>) {
   let { children, ...otherProps } = props;
 
   return (
@@ -17,7 +17,7 @@ function NavButtonRight(props: NavLink["props"]) {
   );
 }
 
-function NavButtonLeft(props: NavLink["props"]) {
+function NavButtonLeft(props: ComponentProps<typeof NavLink>) {
   let { children, ...otherProps } = props;
 
   return (

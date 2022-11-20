@@ -45,8 +45,8 @@ type Props = {
   children?: React.ReactNode;
   path: string;
   component:
-    | React.ComponentClass<RouteComponentProps<any>>
-    | React.StatelessComponent<RouteComponentProps<any>>;
+    | React.ComponentClass<RouteComponentProps>
+    | React.FunctionComponent<RouteComponentProps>;
 };
 
 export function Page(props: Props) {
