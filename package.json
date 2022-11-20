@@ -6,11 +6,14 @@
   "scripts": {
     "help": "app-scripts help",
     "dev": "app-scripts dev",
-    "build": "app-scripts build"
+    "build": "app-scripts build",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "^2.7.1"
   },
   "dependencies": {
@@ -34,5 +37,8 @@
     "regenerator-runtime": "^0.13.3",
     "styled-components": "^5",
     "typescript": "^4"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
