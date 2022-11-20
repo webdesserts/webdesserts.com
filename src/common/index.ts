@@ -1,6 +1,6 @@
-import * as layouts from './layouts'
+import * as layouts from "./layouts";
 
-export {layouts}
-export * from './constants'
-export * from './Project'
-export * from './RouteList'
+export { layouts };
+export * from "./constants";
+export * from "./Project";
+export * from "./RouteList";

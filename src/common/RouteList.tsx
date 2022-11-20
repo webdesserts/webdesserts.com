@@ -1,31 +1,31 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom'
-import styled, { css } from 'styled-components'
-import IconChevronRight from '../icons/icon-chevron-right.svg'
-import IconChevronLeft from '../icons/icon-chevron-left.svg'
-import { colors, fonts, mixins } from '@webdesserts/ui'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import styled, { css } from "styled-components";
+import IconChevronRight from "../icons/icon-chevron-right.svg";
+import IconChevronLeft from "../icons/icon-chevron-left.svg";
+import { colors, fonts, mixins } from "@webdesserts/ui";
 
-export { NavList, NavButtonRight, NavButtonLeft }
+export { NavList, NavButtonRight, NavButtonLeft };
 
 function NavButtonRight(props: NavLink["props"]) {
-  let {children, ...otherProps} = props
+  let { children, ...otherProps } = props;
 
   return (
     <NavButton side="right" {...otherProps}>
       {children} <IconChevronRight />
     </NavButton>
-  )
-} 
+  );
+}
 
 function NavButtonLeft(props: NavLink["props"]) {
-  let {children, ...otherProps} = props
+  let { children, ...otherProps } = props;
 
   return (
     <NavButton side="left" {...otherProps}>
       <IconChevronLeft /> {children}
     </NavButton>
-  )
-} 
+  );
+}
 
 const right_styles = css`
   ${mixins.spread_from_right_edge}
@@ -70,7 +70,9 @@ const NavButton = styled(NavLink)<{ side: "right" | "left" }>`
     --icon-accent: ${colors.liteAlt};
     padding: 4px 12px;
     color: ${colors.liteAlt};
-    p { color: ${colors.liteAlt}; }
+    p {
+      color: ${colors.liteAlt};
+    }
   }
 
   header {

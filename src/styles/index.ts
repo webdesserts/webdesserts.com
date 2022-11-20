@@ -1,1 +1,1 @@
-export * as animations from './animations'
+export * as animations from "./animations";

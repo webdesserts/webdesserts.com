@@ -1,10 +1,10 @@
-import * as React from 'react'
-import styled, { css } from 'styled-components';
-import { Link, LinkProps } from 'react-router-dom'
-import IconChevronLeft from '../icons/icon-chevron-left.svg';
-import { fonts, colors, mixins } from '@webdesserts/ui'
+import * as React from "react";
+import styled, { css } from "styled-components";
+import { Link, LinkProps } from "react-router-dom";
+import IconChevronLeft from "../icons/icon-chevron-left.svg";
+import { fonts, colors, mixins } from "@webdesserts/ui";
 
-type ParentLink = { path: LinkProps["to"], name?: string }
+type ParentLink = { path: LinkProps["to"]; name?: string };
 
 let ParentLinkButton = styled(Link)`
   ${fonts.heading_small}
@@ -27,14 +27,14 @@ let ParentLinkButton = styled(Link)`
     color: ${colors.liteAlt};
     --icon-accent: currentColor;
   }
-`
+`;
 
 type DefaultLayoutProps = {
-  children: React.ReactNode,
-  className?: string,
-  parent?: ParentLink,
-  action?: React.ReactNode
-}
+  children: React.ReactNode;
+  className?: string;
+  parent?: ParentLink;
+  action?: React.ReactNode;
+};
 
 const ActionBar = styled.div`
   position: absolute;
@@ -49,12 +49,16 @@ const ActionBar = styled.div`
   grid-gap: 16px;
   width: 100%;
 
-  &:empty { display: none; }
-  @media print { display: none; }
+  &:empty {
+    display: none;
+  }
+  @media print {
+    display: none;
+  }
   ${ParentLinkButton} {
     justify-self: start;
   }
-`
+`;
 
 const DefaultBlock = styled.article`
   position: relative;
@@ -62,18 +66,18 @@ const DefaultBlock = styled.article`
   grid-auto-flow: row;
   grid-gap: 16px;
   width: calc(100vw - 24px * 2);
-`
+`;
 
-
-export function Default (props: DefaultLayoutProps) {
-  let { children, className, parent, action=null } = props
+export function Default(props: DefaultLayoutProps) {
+  let { children, className, parent, action = null } = props;
 
   return (
     <DefaultBlock className={className}>
       <ActionBar>
         {parent ? (
           <ParentLinkButton to={parent.path}>
-            <IconChevronLeft />{parent.name || "Back"}
+            <IconChevronLeft />
+            {parent.name || "Back"}
           </ParentLinkButton>
         ) : null}
         {action}

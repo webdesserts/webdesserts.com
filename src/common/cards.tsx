@@ -1,13 +1,13 @@
-import * as React from 'react'
-import styled from 'styled-components'
+import * as React from "react";
+import styled from "styled-components";
 
 let CardListWrapper = styled.article`
-  & > *+* {
+  & > * + * {
     margin-top: 16px;
   }
-`
+`;
 
-let CardSection = styled.section``
+let CardSection = styled.section``;
 
 let CardLink = styled.a`
   &[href] {
@@ -19,7 +19,8 @@ let CardLink = styled.a`
     transition: border-left 200ms ease;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-left-width: 4px;
   }
 
@@ -32,9 +33,9 @@ let CardLink = styled.a`
     font-size: 20px;
     color: var(--primary);
   }
-`
+`;
 
-export function Card ({ title, url, description }) {
+export function Card({ title, url, description }) {
   return (
     <CardSection>
       <CardLink href={url}>
@@ -42,15 +43,13 @@ export function Card ({ title, url, description }) {
         <p>{description}</p>
       </CardLink>
     </CardSection>
-  )
+  );
 }
 
-export function CardList ({ cards }) {
+export function CardList({ cards }) {
   let list = cards.map(({ title, description, url }) => (
-    <Card key={title} url={url} title={title} description={description}/>
-  ))
+    <Card key={title} url={url} title={title} description={description} />
+  ));
 
-  return (
-    <CardListWrapper>{list}</CardListWrapper>
-  )
+  return <CardListWrapper>{list}</CardListWrapper>;
 }

@@ -1,35 +1,35 @@
-import * as React from 'react'
-import { RouteComponentProps } from 'react-router'
-import styled from 'styled-components'
-import { NavList, layouts, NavButtonRight, hrefs } from '../common'
-import { DateTime } from 'luxon'
-import {Heading, ButtonLink} from '@webdesserts/ui';
+import * as React from "react";
+import { RouteComponentProps } from "react-router";
+import styled from "styled-components";
+import { NavList, layouts, NavButtonRight, hrefs } from "../common";
+import { DateTime } from "luxon";
+import { Heading, ButtonLink } from "@webdesserts/ui";
 
 let LinkList = styled.ul`
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
-`
+`;
 
 let Layout = styled(layouts.Default)`
   max-width: 300px;
   li + li {
     margin-left: 8px;
   }
-`
+`;
 
 export function Home(props: RouteComponentProps<{}>) {
-  let { isExact } = props.match
-  let tabIndex = isExact ? 0 : -1
+  let { isExact } = props.match;
+  let tabIndex = isExact ? 0 : -1;
 
-  let career_start = DateTime.fromObject({ month: 1, year: 2012 })
-  let years = Math.floor(Math.abs(career_start.diffNow().as("years")))
+  let career_start = DateTime.fromObject({ month: 1, year: 2012 });
+  let years = Math.floor(Math.abs(career_start.diffNow().as("years")));
 
   let link_props = {
     target: "_blank",
     rel: "noopener noreferrer",
-    tabIndex
-  }
+    tabIndex,
+  };
 
   return (
     <Layout>
@@ -55,10 +55,10 @@ export function Home(props: RouteComponentProps<{}>) {
       </LinkList>
       <p>
         Welcome! I am a designer/developer who has been working with the web for
-        the past {years} years. I currently dabble in the <a href={hrefs.hyper.website}>Hypercore</a>{' '}
-        ecosystem in my spare time. I also occasionally dabble with Color Spaces, SVG, and React.
-        If you're new to any of this or you just have questions, feel
-        free to reach out!
+        the past {years} years. I currently dabble in the{" "}
+        <a href={hrefs.hyper.website}>Hypercore</a> ecosystem in my spare time.
+        I also occasionally dabble with Color Spaces, SVG, and React. If you're
+        new to any of this or you just have questions, feel free to reach out!
       </p>
       <NavList>
         <NavButtonRight to="/projects" tabIndex={tabIndex}>

@@ -1,6 +1,6 @@
-import * as React from 'react'
-import styled from 'styled-components';
-import { TickTock } from './tick-tock'
+import * as React from "react";
+import styled from "styled-components";
+import { TickTock } from "./tick-tock";
 
 let Wrapper = styled.div`
   display: flex;
@@ -9,16 +9,18 @@ let Wrapper = styled.div`
   left: 0;
   height: 100vh;
   padding: 4px;
-  & > *+* { margin-left: 4px; }
-`
+  & > * + * {
+    margin-left: 4px;
+  }
+`;
 
 export class Clock extends React.Component {
   render() {
     return (
-      <Wrapper> 
-        <TickTock mode='seconds' />
-        <TickTock mode='minutes' />
+      <Wrapper>
+        <TickTock mode="seconds" />
+        <TickTock mode="minutes" />
       </Wrapper>
-    )
+    );
   }
 }

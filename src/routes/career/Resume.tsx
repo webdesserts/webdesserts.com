@@ -2,7 +2,7 @@ import * as React from "react";
 import styled, { css } from "styled-components";
 import { RouteComponentProps } from "react-router";
 import { layouts, hrefs } from "../../common";
-import { colors, fonts, Button, Heading, } from "@webdesserts/ui";
+import { colors, fonts, Button, Heading } from "@webdesserts/ui";
 
 const Layout = styled(layouts.Default)`
   height: 11in;
@@ -30,7 +30,7 @@ const Paper = styled.div`
   @media screen {
     /* The content seems to scale to fit the page when I try to print so it looks more like this: */
     /* how the actual handling works for different browsers and paper sizes is a bit worrisome. */
-    transform: scale(.95);
+    transform: scale(0.95);
   }
 
   a[href] {
@@ -163,12 +163,12 @@ const Paper = styled.div`
 `;
 
 export function Resume(props: RouteComponentProps<{}>) {
-  let printButton = <Button onClick={() => print()}>Print Page</Button>
+  let printButton = <Button onClick={() => print()}>Print Page</Button>;
 
   let link_props = {
     target: "_blank",
     rel: "noopener noreferrer",
-  }
+  };
 
   return (
     <Layout parent={{ path: "/career", name: "Back" }} action={printButton}>
@@ -179,9 +179,7 @@ export function Resume(props: RouteComponentProps<{}>) {
           </Heading>
           <ul className="contact-line">
             <li>
-              <a href={hrefs.personal.email}>
-                michael@webdesserts.com
-              </a>
+              <a href={hrefs.personal.email}>michael@webdesserts.com</a>
             </li>
             <li>
               <a href={hrefs.personal.website} {...link_props}>
@@ -193,7 +191,9 @@ export function Resume(props: RouteComponentProps<{}>) {
 
         <div className="content">
           <section className="experience">
-            <Heading size="medium" as="h2">Experience</Heading>
+            <Heading size="medium" as="h2">
+              Experience
+            </Heading>
 
             <Heading size="small" as="h3">
               Senior Software Developer
@@ -209,13 +209,17 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="location">Remote</div>
             <div className="duration">September 2019 - Present</div>
             <ul>
-              <li>Serving as the lead client developer for our Event Response app</li>
+              <li>
+                Serving as the lead client developer for our Event Response app
+              </li>
               <li>Responsible for the architectural direction of the client</li>
               <li>Planning and developing major cross-app features</li>
               <li>Working across teams to negotiate design & implementation</li>
               <li>Working to improve test coverage across our core</li>
               <li>Optimizing and documenting our process</li>
-              <li>Training new developers on our codebase, product, and process</li>
+              <li>
+                Training new developers on our codebase, product, and process
+              </li>
             </ul>
 
             <Heading size="small" as="h3">
@@ -232,13 +236,22 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="location">Temple, Texas</div>
             <div className="duration">October 2016 - May 2019</div>
             <ul>
-              <li>Began as a startup where I was one of four starting developers</li>
-              <li>Was responsible for our application's UI and its development</li>
-              <li>Built and maintained our frontend architecture and build system</li>
+              <li>
+                Began as a startup where I was one of four starting developers
+              </li>
+              <li>
+                Was responsible for our application's UI and its development
+              </li>
+              <li>
+                Built and maintained our frontend architecture and build system
+              </li>
               <li>Built and maintained our core React component library</li>
               <li>Worked with the product team to refine our user workflows</li>
               <li>Developed wireframes and mockups for upcoming features</li>
-              <li>Guided developers as they implemented and maintained those designs</li>
+              <li>
+                Guided developers as they implemented and maintained those
+                designs
+              </li>
             </ul>
 
             <Heading size="small" as="h3">
@@ -258,8 +271,14 @@ export function Resume(props: RouteComponentProps<{}>) {
               <li>Acted as an adviser on UI and UX issues</li>
               <li>Helped train new developers on modern JavaScript and CSS</li>
               <li>Took the existing product and developed a design system</li>
-              <li>Researched React, Redux, and other tools for an upcoming surgical product</li>
-              <li>Helped build out the foundation for what would eventually become Veracity Surgical</li>
+              <li>
+                Researched React, Redux, and other tools for an upcoming
+                surgical product
+              </li>
+              <li>
+                Helped build out the foundation for what would eventually become
+                Veracity Surgical
+              </li>
             </ul>
 
             <Heading size="small" as="h3">
@@ -273,10 +292,16 @@ export function Resume(props: RouteComponentProps<{}>) {
             <div className="location">Belton, Texas</div>
             <div className="duration">January 2013 - May 2015</div>
             <ul>
-              <li>Helped design and develop internal applications for the City of San Diego</li>
+              <li>
+                Helped design and develop internal applications for the City of
+                San Diego
+              </li>
               <li>Created mockups and graphics for new applications</li>
               <li>Acted as the lead frontend developer on several projects</li>
-              <li>Worked to find creative ways to apply modern practices to legacy software</li>
+              <li>
+                Worked to find creative ways to apply modern practices to legacy
+                software
+              </li>
               <li>Advised on UI and UX issues when needed</li>
             </ul>
 
@@ -409,19 +434,25 @@ export function Resume(props: RouteComponentProps<{}>) {
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-github" />
                   </svg>
-                  <a href={hrefs.personal.github} {...link_props}>webdesserts</a>
+                  <a href={hrefs.personal.github} {...link_props}>
+                    webdesserts
+                  </a>
                 </li>
                 <li className="badge">
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-linkedin" />
                   </svg>
-                  <a href={hrefs.personal.linkedin} {...link_props}>/in/webdesserts</a>
+                  <a href={hrefs.personal.linkedin} {...link_props}>
+                    /in/webdesserts
+                  </a>
                 </li>
                 <li className="badge">
                   <svg viewBox="0 0 16 16">
                     <use xlinkHref="#icon-twitter" />
                   </svg>
-                  <a href={hrefs.personal.twitter} {...link_props}>@webdesserts</a>
+                  <a href={hrefs.personal.twitter} {...link_props}>
+                    @webdesserts
+                  </a>
                 </li>
               </ul>
             </section>
