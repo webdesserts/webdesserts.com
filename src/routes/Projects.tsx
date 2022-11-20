@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { RouteComponentProps } from "react-router";
 import { Project, layouts, hrefs } from "../common";
 
-const logger_links = {
-  Figma: hrefs.logger.figma,
-  Github: hrefs.logger.github,
+const dot_cli_links = {
+  Github: hrefs.dots_cli.github,
+  Crate: hrefs.dots_cli.crate,
 };
 
 const Layout = styled(layouts.Default)`
@@ -16,11 +16,11 @@ const Layout = styled(layouts.Default)`
 export function Projects(props: RouteComponentProps<{}>) {
   return (
     <Layout parent={{ path: "/", name: "Back" }}>
-      <Project title="Logger" status="early development" links={logger_links}>
-        A personal time tracker focused on producing consistant and healthy work
-        habits. Not intended to be a strict log, but more of a pomodoro with a
-        birds-eye view. It’s my way of improving productivity while avoiding
-        burnout.
+      <Project title="Dot Cli" status="early development" links={dot_cli_links}>
+        The cli I use to manage all of my dotfiles. It will pull down a repo
+        containing your dotfiles, and using a declaritive config, it will
+        automatically link the files where they belong, communicating what
+        changes will be made to your file system along the way.
       </Project>
     </Layout>
   );

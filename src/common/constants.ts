@@ -28,4 +28,8 @@ export const hrefs = {
       "https://www.figma.com/file/YTQS6iZHzqMQPlewPs83sHLq/Web-Desserts?node-id=40%3A48",
     github: "https://github.com/webdesserts/logger",
   },
+  dots_cli: {
+    github: "https://github.com/webdesserts/dots-cli",
+    crate: "https://crates.io/crates/dots",
+  },
 };
