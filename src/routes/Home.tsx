@@ -38,8 +38,8 @@ export function Home(props: RouteComponentProps<{}>) {
       </Heading>
       <LinkList>
         <li>
-          <ButtonLink href={hrefs.personal.twitter} {...link_props}>
-            Twitter
+          <ButtonLink href={hrefs.personal.bluesky} {...link_props}>
+            Bluesky
           </ButtonLink>
         </li>
         <li>

@@ -3,7 +3,7 @@ export const hrefs = {
     email: "mailto:michael@webdesserts.com",
     website: "https://webdesserts.com",
     linkedin: "https://www.linkedin.com/in/webdesserts",
-    twitter: "https://twitter.com/webdesserts",
+    bluesky: "https://bsky.app/profile/webdesserts.com",
     github: "https://github.com/webdesserts",
     twitch: "https://twitch.tv/webdesserts",
   },
