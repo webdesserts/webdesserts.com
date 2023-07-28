@@ -3,11 +3,13 @@
   "description": "The personal site of Michael Mullins",
   "author": "Michael Mullins <michael@webdesserts.com>",
   "private": true,
+  "type": "module",
   "scripts": {
     "help": "app-scripts help",
     "dev": "app-scripts dev",
     "build": "app-scripts build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "save-resume": "./scripts/save-resume.m.js"
   },
   "devDependencies": {
     "@types/react": "18",
@@ -28,6 +30,7 @@
     "immer": "^3.1.3",
     "lodash.throttle": "^4.1.1",
     "luxon": "^1.16.0",
+    "playwright": "^1.36.2",
     "react": "18",
     "react-dom": "18",
     "react-is": "18",

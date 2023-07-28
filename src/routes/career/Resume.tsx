@@ -1,8 +1,8 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { RouteComponentProps } from "react-router";
 import { layouts, hrefs } from "../../common";
-import { colors, fonts, Button, Heading } from "@webdesserts/ui";
+import { colors, fonts, Button, Heading, ButtonLink } from "@webdesserts/ui";
 
 const Layout = styled(layouts.Default)`
   height: 11in;
@@ -18,6 +18,12 @@ const Layout = styled(layouts.Default)`
   @media print {
     height: auto;
   }
+`;
+
+const Actions = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  gap: 16px;
 `;
 
 const Paper = styled.div`
@@ -163,7 +169,12 @@ const Paper = styled.div`
 `;
 
 export function Resume(props: RouteComponentProps<{}>) {
-  let printButton = <Button onClick={() => print()}>Print Page</Button>;
+  let downloadButton = (
+    <ButtonLink download="michael-mullins-resume.pdf" href="/resume.pdf">
+      Download
+    </ButtonLink>
+  );
+  let printButton = <Button onClick={() => print()}>Print</Button>;
 
   let link_props = {
     target: "_blank",
@@ -171,8 +182,16 @@ export function Resume(props: RouteComponentProps<{}>) {
   };
 
   return (
-    <Layout parent={{ path: "/career", name: "Back" }} action={printButton}>
-      <Paper>
+    <Layout
+      parent={{ path: "/career", name: "Back" }}
+      action={
+        <Actions>
+          {downloadButton}
+          {printButton}
+        </Actions>
+      }
+    >
+      <Paper id="resume">
         <header>
           <Heading size="large" as="h1">
             Michael C. Mullins
