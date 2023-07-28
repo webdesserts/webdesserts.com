@@ -71,9 +71,9 @@ export function Career(props: RouteComponentProps<{}>) {
             /in/mcmullins
           </ButtonLink>
         </Field>
-        {/* <ResumeNavButton tabIndex={tabIndex} to="/career/resume">
+        <ResumeNavButton tabIndex={tabIndex} to="/career/resume">
           <header>Paper Resume</header>
-        </ResumeNavButton> */}
+        </ResumeNavButton>
       </Footer>
     </Layout>
   );
