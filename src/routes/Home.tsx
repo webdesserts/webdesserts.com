@@ -47,11 +47,11 @@ export function Home(props: RouteComponentProps<{}>) {
             Github
           </ButtonLink>
         </li>
-        <li>
+        {/* <li>
           <ButtonLink href={hrefs.personal.twitch} {...link_props}>
             Twitch
           </ButtonLink>
-        </li>
+        </li> */}
       </LinkList>
       <p>
         Welcome! I am a designer/developer who has been working with the web for
